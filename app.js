@@ -4,7 +4,7 @@ const CirklonAllowedCharacters = "[-A-Za-z0-9()#. $@!&+{}*]";
 const CirklonEmpty = 'Empty';
 const CirklonContinuousControl = 'MIDI CC';
 const CirklonTrackCtrl = 'Track CTRL';
-const trackValues = ['pgm', 'quant%', 'note%', 'noteC', 'velo%', 'veloC', 'leng%', 'tbase', 'octave', 'knob1', 'knob2'];
+const trackValues = ['pgm', 'quant%', 'note%', 'noteC', 'velo%', 'veloC', 'leng%', 'tbase', 'xpos', 'octave', 'knob1', 'knob2', 'fts-R', 'fts-S', 'reich'];
 const midiPortValues = ['1', '2', '3', '4', '5', 'usb1', 'usb2', 'usb3', 'usb4', 'usb5'];
 
 var RowDefinitionEditor = function(rowDefinition) {

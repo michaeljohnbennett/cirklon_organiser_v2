@@ -1,0 +1,1771 @@
+{
+	"instrument_data": {
+		"template": {
+			"CC_defs": {
+				"CC_13": {
+					"label": "Shape1",
+					"min_val": 0,
+					"max_val": 3,
+					"start_val": 0
+				},
+				"CC_14": {
+					"label": "Shape2",
+					"min_val": 0,
+					"max_val": 2,
+					"start_val": 0
+				},
+				"CC_15": {
+					"label": "Freq1",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 64
+				},
+				"CC_16": {
+					"label": "Freq2",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 64
+				},
+				"CC_17": {
+					"label": "PMod1",
+					"min_val": 0,
+					"max_val": 1,
+					"start_val": 0
+				},
+				"CC_18": {
+					"label": "PMod2",
+					"min_val": 0,
+					"max_val": 1,
+					"start_val": 0
+				},
+				"CC_19": {
+					"label": "FM AMT",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_20": {
+					"label": "Drop 1",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 64
+				},
+				"CC_21": {
+					"label": "Drop 2",
+					"min_val": 64,
+					"max_val": 127,
+					"start_val": 64
+				},
+				"CC_22": {
+					"label": "Slope1",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 64
+				},
+				"CC_23": {
+					"label": "Slope2",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 64
+				},
+				"CC_24": {
+					"label": "NSlope",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_25": {
+					"label": "VCO1L",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 64
+				},
+				"CC_26": {
+					"label": "VCO2L",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_27": {
+					"label": "NoiseL",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_28": {
+					"label": "RingMo",
+					"min_val": 0,
+					"max_val": 2,
+					"start_val": 0
+				},
+				"CC_29": {
+					"label": "VCFMod",
+					"min_val": 0,
+					"max_val": 1,
+					"start_val": 0
+				},
+				"CC_30": {
+					"label": "VCFCut",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 127
+				},
+				"CC_31": {
+					"label": "FGrit",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_32": {
+					"label": "FDecay",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 64
+				},
+				"CC_33": {
+					"label": "FEnvMo",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_34": {
+					"label": "Attack",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_35": {
+					"label": "Decay",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 64
+				},
+				"CC_36": {
+					"label": "Boost",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_37": {
+					"label": "BitDrv",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_38": {
+					"label": "Gain",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 64
+				},
+				"CC_39": {
+					"label": "Pm-Slp",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_40": {
+					"label": "Pm-Noi",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_41": {
+					"label": "Pm-Cut",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_42": {
+					"label": "Pm-Lvl",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_43": {
+					"label": "Pm-FM",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_44": {
+					"label": "Pm-O+O",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_45": {
+					"label": "Vl-Slp",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_46": {
+					"label": "Vl-Noi",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_47": {
+					"label": "Vl-Cut",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_48": {
+					"label": "Vl-Lvl",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_49": {
+					"label": "Vl-FM",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_50": {
+					"label": "Vl-O+O",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				}
+			},
+			"track_values": {
+				"slot_1": {
+					"track_control": "pgm"
+				},
+				"slot_7": {
+					"track_control": "tbase"
+				},
+				"slot_8": {
+					"track_control": "quant%"
+				},
+				"slot_9": {
+					"track_control": "veloC"
+				},
+				"slot_10": {
+					"track_control": "velo%"
+				},
+				"slot_13": {
+					"track_control": "octave"
+				},
+				"slot_16": {
+					"track_control": "noteC"
+				},
+				"slot_17": {
+					"track_control": "note%"
+				},
+				"slot_19": {
+					"MIDI_CC": 25,
+					"label": "VCO1L"
+				},
+				"slot_20": {
+					"MIDI_CC": 13,
+					"label": "Shape1"
+				},
+				"slot_21": {
+					"MIDI_CC": 15,
+					"label": "Freq1"
+				},
+				"slot_22": {
+					"MIDI_CC": 17,
+					"label": "PMod1"
+				},
+				"slot_23": {
+					"MIDI_CC": 20,
+					"label": "Drop 1"
+				},
+				"slot_24": {
+					"MIDI_CC": 22,
+					"label": "Slope1"
+				},
+				"slot_25": {
+					"MIDI_CC": 26,
+					"label": "VCO2L"
+				},
+				"slot_26": {
+					"MIDI_CC": 14,
+					"label": "Shape2"
+				},
+				"slot_27": {
+					"MIDI_CC": 16,
+					"label": "Freq2"
+				},
+				"slot_28": {
+					"MIDI_CC": 18,
+					"label": "PMod2"
+				},
+				"slot_29": {
+					"MIDI_CC": 21,
+					"label": "Drop 2"
+				},
+				"slot_30": {
+					"MIDI_CC": 23,
+					"label": "Slope2"
+				},
+				"slot_31": {
+					"MIDI_CC": 19,
+					"label": "FM AMT"
+				},
+				"slot_32": {
+					"MIDI_CC": 28,
+					"label": "RingMo"
+				},
+				"slot_33": {
+					"MIDI_CC": 27,
+					"label": "NoiseL"
+				},
+				"slot_34": {
+					"MIDI_CC": 24,
+					"label": "NSlope"
+				},
+				"slot_37": {
+					"MIDI_CC": 34,
+					"label": "Attack"
+				},
+				"slot_38": {
+					"MIDI_CC": 35,
+					"label": "Decay"
+				},
+				"slot_39": {
+					"MIDI_CC": 36,
+					"label": "Boost"
+				},
+				"slot_40": {
+					"MIDI_CC": 37,
+					"label": "BitDrv"
+				},
+				"slot_41": {
+					"MIDI_CC": 38,
+					"label": "Gain"
+				},
+				"slot_43": {
+					"MIDI_CC": 29,
+					"label": "VCFMod"
+				},
+				"slot_44": {
+					"MIDI_CC": 30,
+					"label": "VCFCut"
+				},
+				"slot_45": {
+					"MIDI_CC": 32,
+					"label": "FDecay"
+				},
+				"slot_46": {
+					"MIDI_CC": 33,
+					"label": "FEnvMo"
+				},
+				"slot_47": {
+					"MIDI_CC": 31,
+					"label": "FGrit"
+				},
+				"slot_49": {
+					"MIDI_CC": 39,
+					"label": "Pm-Slp"
+				},
+				"slot_50": {
+					"MIDI_CC": 40,
+					"label": "Pm-Noi"
+				},
+				"slot_51": {
+					"MIDI_CC": 41,
+					"label": "Pm-Cut"
+				},
+				"slot_52": {
+					"MIDI_CC": 42,
+					"label": "Pm-Lvl"
+				},
+				"slot_53": {
+					"MIDI_CC": 43,
+					"label": "Pm-FM"
+				},
+				"slot_54": {
+					"MIDI_CC": 44,
+					"label": "Pm-O+O"
+				},
+				"slot_55": {
+					"MIDI_CC": 45,
+					"label": "Vl-Slp"
+				},
+				"slot_56": {
+					"MIDI_CC": 46,
+					"label": "Vl-Noi"
+				},
+				"slot_57": {
+					"MIDI_CC": 47,
+					"label": "Vl-Cut"
+				},
+				"slot_58": {
+					"MIDI_CC": 48,
+					"label": "Vl-Lvl"
+				},
+				"slot_59": {
+					"MIDI_CC": 49,
+					"label": "Vl-FM"
+				},
+				"slot_60": {
+					"MIDI_CC": 50,
+					"label": "Vl-O+O"
+				}
+			},
+			"midi_port": "5",
+			"midi_chan": 1,
+			"multi": false,
+			"presend_pgm": false,
+			"default_note": "C 3",
+			"default_patt": "P3",
+			"poly_spread": "off",
+			"no_bankL": false,
+			"no_bankM": false,
+			"no_xpose": false,
+			"no_fts": false,
+			"show_note_nums": false,
+			"no_thru": false
+		},
+		"Template": {
+			"CC_defs": {
+				"CC_0": {
+					"label": "0",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_1": {
+					"label": "1",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_2": {
+					"label": "2",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_3": {
+					"label": "3",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_4": {
+					"label": "4",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_5": {
+					"label": "5",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_6": {
+					"label": "6",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_7": {
+					"label": "7",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_8": {
+					"label": "8",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_9": {
+					"label": "9",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_10": {
+					"label": "10",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_11": {
+					"label": "11",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_12": {
+					"label": "12",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_13": {
+					"label": "13",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_14": {
+					"label": "14",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_15": {
+					"label": "15",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_16": {
+					"label": "16",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_17": {
+					"label": "17",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_18": {
+					"label": "18",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_19": {
+					"label": "19",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_20": {
+					"label": "20",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_21": {
+					"label": "21",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_22": {
+					"label": "22",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_23": {
+					"label": "23",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_24": {
+					"label": "24",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_25": {
+					"label": "25",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_26": {
+					"label": "26",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_27": {
+					"label": "27",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_28": {
+					"label": "28",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_29": {
+					"label": "29",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_30": {
+					"label": "30",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_31": {
+					"label": "31",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_32": {
+					"label": "32",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_33": {
+					"label": "33",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_34": {
+					"label": "34",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_35": {
+					"label": "35",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_36": {
+					"label": "36",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_37": {
+					"label": "37",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_38": {
+					"label": "38",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_39": {
+					"label": "39",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_40": {
+					"label": "40",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_41": {
+					"label": "41",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_42": {
+					"label": "42",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_43": {
+					"label": "43",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_44": {
+					"label": "44",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_45": {
+					"label": "45",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_46": {
+					"label": "46",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_47": {
+					"label": "47",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_48": {
+					"label": "48",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_49": {
+					"label": "49",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_50": {
+					"label": "50",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_51": {
+					"label": "51",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_52": {
+					"label": "52",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_53": {
+					"label": "53",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_54": {
+					"label": "54",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_55": {
+					"label": "55",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_56": {
+					"label": "56",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_57": {
+					"label": "57",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_58": {
+					"label": "58",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_59": {
+					"label": "59",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_60": {
+					"label": "60",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_61": {
+					"label": "61",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_62": {
+					"label": "62",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_63": {
+					"label": "63",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_64": {
+					"label": "64",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_65": {
+					"label": "65",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_66": {
+					"label": "66",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_67": {
+					"label": "67",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_68": {
+					"label": "68",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_69": {
+					"label": "69",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_70": {
+					"label": "70",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_71": {
+					"label": "71",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_72": {
+					"label": "72",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_73": {
+					"label": "73",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_74": {
+					"label": "74",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_75": {
+					"label": "75",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_76": {
+					"label": "76",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_77": {
+					"label": "77",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_78": {
+					"label": "78",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_79": {
+					"label": "79",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_80": {
+					"label": "80",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_81": {
+					"label": "81",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_82": {
+					"label": "82",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_83": {
+					"label": "83",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_84": {
+					"label": "84",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_85": {
+					"label": "85",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_86": {
+					"label": "86",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_87": {
+					"label": "87",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_88": {
+					"label": "88",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_89": {
+					"label": "89",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_90": {
+					"label": "90",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_91": {
+					"label": "91",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_92": {
+					"label": "92",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_93": {
+					"label": "93",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_94": {
+					"label": "94",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_95": {
+					"label": "95",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_96": {
+					"label": "96",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_97": {
+					"label": "97",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_98": {
+					"label": "98",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_99": {
+					"label": "99",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_100": {
+					"label": "100",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_101": {
+					"label": "101",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_102": {
+					"label": "102",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_103": {
+					"label": "103",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_104": {
+					"label": "104",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_105": {
+					"label": "105",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_106": {
+					"label": "106",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_107": {
+					"label": "107",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_108": {
+					"label": "108",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_109": {
+					"label": "109",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_110": {
+					"label": "110",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_111": {
+					"label": "111",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_112": {
+					"label": "112",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_113": {
+					"label": "113",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_114": {
+					"label": "114",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_115": {
+					"label": "115",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_116": {
+					"label": "116",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_117": {
+					"label": "117",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_118": {
+					"label": "118",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_119": {
+					"label": "119",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_120": {
+					"label": "120",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_121": {
+					"label": "121",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_122": {
+					"label": "122",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_123": {
+					"label": "123",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_124": {
+					"label": "124",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_125": {
+					"label": "125",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_126": {
+					"label": "126",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				},
+				"CC_127": {
+					"label": "127",
+					"min_val": 0,
+					"max_val": 127,
+					"start_val": 0
+				}
+			},
+			"track_values": {
+				"slot_1": {
+					"track_control": "pgm"
+				},
+				"slot_7": {
+					"track_control": "tbase"
+				},
+				"slot_8": {
+					"track_control": "quant%"
+				},
+				"slot_9": {
+					"track_control": "veloC"
+				},
+				"slot_10": {
+					"track_control": "velo%"
+				},
+				"slot_11": {
+					"track_control": "leng%"
+				},
+				"slot_13": {
+					"track_control": "octave"
+				},
+				"slot_14": {
+					"track_control": "xpos"
+				},
+				"slot_15": {
+					"track_control": "noteC"
+				},
+				"slot_16": {
+					"track_control": "note%"
+				},
+				"slot_17": {
+					"track_control": "fts-R"
+				},
+				"slot_18": {
+					"track_control": "fts-S"
+				},
+				"slot_19": {
+					"track_control": "knob1"
+				},
+				"slot_20": {
+					"track_control": "knob2"
+				},
+				"slot_22": {
+					"track_control": "reich"
+				},
+				"slot_25": {
+					"MIDI_CC": 0,
+					"label": "0"
+				},
+				"slot_26": {
+					"MIDI_CC": 1,
+					"label": "1"
+				},
+				"slot_27": {
+					"MIDI_CC": 2,
+					"label": "2"
+				},
+				"slot_28": {
+					"MIDI_CC": 3,
+					"label": "3"
+				},
+				"slot_29": {
+					"MIDI_CC": 4,
+					"label": "4"
+				},
+				"slot_30": {
+					"MIDI_CC": 5,
+					"label": "5"
+				},
+				"slot_31": {
+					"MIDI_CC": 6,
+					"label": "6"
+				},
+				"slot_32": {
+					"MIDI_CC": 7,
+					"label": "7"
+				},
+				"slot_33": {
+					"MIDI_CC": 8,
+					"label": "8"
+				},
+				"slot_34": {
+					"MIDI_CC": 9,
+					"label": "9"
+				},
+				"slot_35": {
+					"MIDI_CC": 10,
+					"label": "10"
+				},
+				"slot_36": {
+					"MIDI_CC": 11,
+					"label": "11"
+				},
+				"slot_37": {
+					"MIDI_CC": 12,
+					"label": "12"
+				},
+				"slot_38": {
+					"MIDI_CC": 13,
+					"label": "13"
+				},
+				"slot_39": {
+					"MIDI_CC": 14,
+					"label": "14"
+				},
+				"slot_40": {
+					"MIDI_CC": 15,
+					"label": "15"
+				},
+				"slot_41": {
+					"MIDI_CC": 16,
+					"label": "16"
+				},
+				"slot_42": {
+					"MIDI_CC": 17,
+					"label": "17"
+				},
+				"slot_43": {
+					"MIDI_CC": 18,
+					"label": "18"
+				},
+				"slot_44": {
+					"MIDI_CC": 19,
+					"label": "19"
+				},
+				"slot_45": {
+					"MIDI_CC": 20,
+					"label": "20"
+				},
+				"slot_46": {
+					"MIDI_CC": 21,
+					"label": "21"
+				},
+				"slot_47": {
+					"MIDI_CC": 22,
+					"label": "22"
+				},
+				"slot_48": {
+					"MIDI_CC": 23,
+					"label": "23"
+				},
+				"slot_49": {
+					"MIDI_CC": 24,
+					"label": "24"
+				},
+				"slot_50": {
+					"MIDI_CC": 25,
+					"label": "25"
+				},
+				"slot_51": {
+					"MIDI_CC": 26,
+					"label": "26"
+				},
+				"slot_52": {
+					"MIDI_CC": 27,
+					"label": "27"
+				},
+				"slot_53": {
+					"MIDI_CC": 28,
+					"label": "28"
+				},
+				"slot_54": {
+					"MIDI_CC": 29,
+					"label": "29"
+				},
+				"slot_55": {
+					"MIDI_CC": 30,
+					"label": "30"
+				},
+				"slot_56": {
+					"MIDI_CC": 31,
+					"label": "31"
+				},
+				"slot_57": {
+					"MIDI_CC": 32,
+					"label": "32"
+				},
+				"slot_58": {
+					"MIDI_CC": 33,
+					"label": "33"
+				},
+				"slot_59": {
+					"MIDI_CC": 34,
+					"label": "34"
+				},
+				"slot_60": {
+					"MIDI_CC": 35,
+					"label": "35"
+				},
+				"slot_61": {
+					"MIDI_CC": 36,
+					"label": "36"
+				},
+				"slot_62": {
+					"MIDI_CC": 37,
+					"label": "37"
+				},
+				"slot_63": {
+					"MIDI_CC": 38,
+					"label": "38"
+				},
+				"slot_64": {
+					"MIDI_CC": 39,
+					"label": "39"
+				},
+				"slot_65": {
+					"MIDI_CC": 40,
+					"label": "40"
+				},
+				"slot_66": {
+					"MIDI_CC": 41,
+					"label": "41"
+				},
+				"slot_67": {
+					"MIDI_CC": 42,
+					"label": "42"
+				},
+				"slot_68": {
+					"MIDI_CC": 43,
+					"label": "43"
+				},
+				"slot_69": {
+					"MIDI_CC": 44,
+					"label": "44"
+				},
+				"slot_70": {
+					"MIDI_CC": 45,
+					"label": "45"
+				},
+				"slot_71": {
+					"MIDI_CC": 46,
+					"label": "46"
+				},
+				"slot_72": {
+					"MIDI_CC": 47,
+					"label": "47"
+				},
+				"slot_73": {
+					"MIDI_CC": 48,
+					"label": "48"
+				},
+				"slot_74": {
+					"MIDI_CC": 49,
+					"label": "49"
+				},
+				"slot_75": {
+					"MIDI_CC": 50,
+					"label": "50"
+				},
+				"slot_76": {
+					"MIDI_CC": 51,
+					"label": "51"
+				},
+				"slot_77": {
+					"MIDI_CC": 52,
+					"label": "52"
+				},
+				"slot_78": {
+					"MIDI_CC": 53,
+					"label": "53"
+				},
+				"slot_79": {
+					"MIDI_CC": 54,
+					"label": "54"
+				},
+				"slot_80": {
+					"MIDI_CC": 55,
+					"label": "55"
+				},
+				"slot_81": {
+					"MIDI_CC": 56,
+					"label": "56"
+				},
+				"slot_82": {
+					"MIDI_CC": 57,
+					"label": "57"
+				},
+				"slot_83": {
+					"MIDI_CC": 58,
+					"label": "58"
+				},
+				"slot_84": {
+					"MIDI_CC": 59,
+					"label": "59"
+				},
+				"slot_85": {
+					"MIDI_CC": 60,
+					"label": "60"
+				},
+				"slot_86": {
+					"MIDI_CC": 61,
+					"label": "61"
+				},
+				"slot_87": {
+					"MIDI_CC": 62,
+					"label": "62"
+				},
+				"slot_88": {
+					"MIDI_CC": 63,
+					"label": "63"
+				},
+				"slot_89": {
+					"MIDI_CC": 64,
+					"label": "64"
+				},
+				"slot_90": {
+					"MIDI_CC": 65,
+					"label": "65"
+				},
+				"slot_91": {
+					"MIDI_CC": 66,
+					"label": "66"
+				},
+				"slot_92": {
+					"MIDI_CC": 67,
+					"label": "67"
+				},
+				"slot_93": {
+					"MIDI_CC": 68,
+					"label": "68"
+				},
+				"slot_94": {
+					"MIDI_CC": 69,
+					"label": "69"
+				},
+				"slot_95": {
+					"MIDI_CC": 70,
+					"label": "70"
+				},
+				"slot_96": {
+					"MIDI_CC": 71,
+					"label": "71"
+				},
+				"slot_97": {
+					"MIDI_CC": 72,
+					"label": "72"
+				},
+				"slot_98": {
+					"MIDI_CC": 73,
+					"label": "73"
+				},
+				"slot_99": {
+					"MIDI_CC": 74,
+					"label": "74"
+				},
+				"slot_100": {
+					"MIDI_CC": 75,
+					"label": "75"
+				},
+				"slot_101": {
+					"MIDI_CC": 76,
+					"label": "76"
+				},
+				"slot_102": {
+					"MIDI_CC": 77,
+					"label": "77"
+				},
+				"slot_103": {
+					"MIDI_CC": 78,
+					"label": "78"
+				},
+				"slot_104": {
+					"MIDI_CC": 79,
+					"label": "79"
+				},
+				"slot_105": {
+					"MIDI_CC": 80,
+					"label": "80"
+				},
+				"slot_106": {
+					"MIDI_CC": 81,
+					"label": "81"
+				},
+				"slot_107": {
+					"MIDI_CC": 82,
+					"label": "82"
+				},
+				"slot_108": {
+					"MIDI_CC": 83,
+					"label": "83"
+				},
+				"slot_109": {
+					"MIDI_CC": 84,
+					"label": "84"
+				},
+				"slot_110": {
+					"MIDI_CC": 85,
+					"label": "85"
+				},
+				"slot_111": {
+					"MIDI_CC": 86,
+					"label": "86"
+				},
+				"slot_112": {
+					"MIDI_CC": 87,
+					"label": "87"
+				},
+				"slot_113": {
+					"MIDI_CC": 88,
+					"label": "88"
+				},
+				"slot_114": {
+					"MIDI_CC": 89,
+					"label": "89"
+				},
+				"slot_115": {
+					"MIDI_CC": 90,
+					"label": "90"
+				},
+				"slot_116": {
+					"MIDI_CC": 91,
+					"label": "91"
+				},
+				"slot_117": {
+					"MIDI_CC": 92,
+					"label": "92"
+				},
+				"slot_118": {
+					"MIDI_CC": 93,
+					"label": "93"
+				},
+				"slot_119": {
+					"MIDI_CC": 94,
+					"label": "94"
+				},
+				"slot_120": {
+					"MIDI_CC": 95,
+					"label": "95"
+				},
+				"slot_121": {
+					"MIDI_CC": 96,
+					"label": "96"
+				},
+				"slot_122": {
+					"MIDI_CC": 97,
+					"label": "97"
+				},
+				"slot_123": {
+					"MIDI_CC": 98,
+					"label": "98"
+				},
+				"slot_124": {
+					"MIDI_CC": 99,
+					"label": "99"
+				},
+				"slot_125": {
+					"MIDI_CC": 100,
+					"label": "100"
+				},
+				"slot_126": {
+					"MIDI_CC": 101,
+					"label": "101"
+				},
+				"slot_127": {
+					"MIDI_CC": 102,
+					"label": "102"
+				},
+				"slot_128": {
+					"MIDI_CC": 103,
+					"label": "103"
+				},
+				"slot_129": {
+					"MIDI_CC": 104,
+					"label": "104"
+				},
+				"slot_130": {
+					"MIDI_CC": 105,
+					"label": "105"
+				},
+				"slot_131": {
+					"MIDI_CC": 106,
+					"label": "106"
+				},
+				"slot_132": {
+					"MIDI_CC": 107,
+					"label": "107"
+				},
+				"slot_133": {
+					"MIDI_CC": 108,
+					"label": "108"
+				},
+				"slot_134": {
+					"MIDI_CC": 109,
+					"label": "109"
+				},
+				"slot_135": {
+					"MIDI_CC": 110,
+					"label": "110"
+				},
+				"slot_136": {
+					"MIDI_CC": 111,
+					"label": "111"
+				},
+				"slot_137": {
+					"MIDI_CC": 112,
+					"label": "112"
+				},
+				"slot_138": {
+					"MIDI_CC": 113,
+					"label": "113"
+				},
+				"slot_139": {
+					"MIDI_CC": 114,
+					"label": "114"
+				},
+				"slot_140": {
+					"MIDI_CC": 115,
+					"label": "115"
+				},
+				"slot_141": {
+					"MIDI_CC": 116,
+					"label": "116"
+				},
+				"slot_142": {
+					"MIDI_CC": 117,
+					"label": "117"
+				},
+				"slot_143": {
+					"MIDI_CC": 118,
+					"label": "118"
+				},
+				"slot_144": {
+					"MIDI_CC": 119,
+					"label": "119"
+				},
+				"slot_145": {
+					"MIDI_CC": 120,
+					"label": "120"
+				},
+				"slot_146": {
+					"MIDI_CC": 121,
+					"label": "121"
+				},
+				"slot_147": {
+					"MIDI_CC": 122,
+					"label": "122"
+				},
+				"slot_148": {
+					"MIDI_CC": 123,
+					"label": "123"
+				},
+				"slot_149": {
+					"MIDI_CC": 124,
+					"label": "124"
+				},
+				"slot_150": {
+					"MIDI_CC": 125,
+					"label": "125"
+				},
+				"slot_151": {
+					"MIDI_CC": 126,
+					"label": "126"
+				},
+				"slot_152": {
+					"MIDI_CC": 127,
+					"label": "127"
+				}
+			},
+			"midi_port": "1",
+			"midi_chan": 1,
+			"multi": false,
+			"presend_pgm": false,
+			"default_note": "C 3",
+			"default_patt": "P3",
+			"poly_spread": "off",
+			"no_bankL": false,
+			"no_bankM": false,
+			"no_xpose": false,
+			"no_fts": false,
+			"show_note_nums": false,
+			"no_thru": false
+		}
+	}
+}
