@@ -46,10 +46,10 @@
 <form class="form-horizontal columns">
     <div class="col-7">
       <div class="form-group">
-        <div class="col-3"><label class="form-label">Load Template</label></div>
+        <div class="col-3"><label class="form-label" for="load-template-btn">Load Template</label></div>
         <div class="col-9">
           <div class="dropdown" class:active={showTemplateDropdown}>
-            <button type="button" class="btn btn-sm dropdown-toggle" tabindex="0" on:click={toggleTemplateDropdown}>
+            <button id="load-template-btn" type="button" class="btn btn-sm dropdown-toggle" tabindex="0" on:click={toggleTemplateDropdown}>
               Load Instrument Template <i class="icon icon-caret"></i>
             </button>
             <ul class="menu">
@@ -67,9 +67,10 @@
       </div>
       
       <div class="form-group" class:error={!isNameValid(instrument.name)}>
-        <div class="col-3"><label class="form-label">Name</label></div>
+        <div class="col-3"><label class="form-label" for="instrument-name">Name</label></div>
         <div class="col-9">
           <input 
+            id="instrument-name"
             class="form-input" 
             type="text" 
             placeholder="name" 
@@ -81,9 +82,10 @@
       </div>
       
       <div class="form-group">
-        <div class="col-3"><label class="form-label">MIDI port</label></div>
+        <div class="col-3"><label class="form-label" for="instrument-midi-port">MIDI port</label></div>
         <div class="col-9">
           <select 
+            id="instrument-midi-port"
             class="form-select" 
             bind:value={instrument.midiPort}
             on:change={(e) => updateInstrument('midiPort', e.target.value)}
@@ -96,9 +98,10 @@
       </div>
       
       <div class="form-group" class:error={!isMidiChannelValid(instrument.midiChannel)}>
-        <div class="col-3"><label class="form-label">MIDI channel</label></div>
+        <div class="col-3"><label class="form-label" for="instrument-midi-channel">MIDI channel</label></div>
         <div class="col-9">
           <select 
+            id="instrument-midi-channel"
             class="form-select" 
             bind:value={instrument.midiChannel}
             on:change={(e) => updateInstrument('midiChannel', parseInt(e.target.value))}
@@ -111,9 +114,10 @@
       </div>
       
       <div class="form-group">
-        <div class="col-3"><label class="form-label">Default Note</label></div>
+        <div class="col-3"><label class="form-label" for="instrument-default-note">Default Note</label></div>
         <div class="col-9">
           <select 
+            id="instrument-default-note"
             class="form-select" 
             bind:value={instrument.default_note}
             on:change={(e) => updateInstrument('default_note', e.target.value)}
@@ -126,9 +130,10 @@
       </div>
       
       <div class="form-group">
-        <div class="col-3"><label class="form-label">Default Pattern</label></div>
+        <div class="col-3"><label class="form-label" for="instrument-default-pattern">Default Pattern</label></div>
         <div class="col-9">
           <select 
+            id="instrument-default-pattern"
             class="form-select" 
             bind:value={instrument.default_patt}
             on:change={(e) => updateInstrument('default_patt', e.target.value)}

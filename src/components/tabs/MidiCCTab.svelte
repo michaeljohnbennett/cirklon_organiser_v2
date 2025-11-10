@@ -193,9 +193,10 @@
         <legend>{selectedCC ? 'Edit' : 'New'}</legend>
         
         <div class="form-group">
-          <div class="col-3"><label class="form-label">Name</label></div>
+          <div class="col-3"><label class="form-label" for="midi-cc-name">Name</label></div>
           <div class="col-9">
             <input 
+              id="midi-cc-name"
               class="form-input" 
               type="text" 
               maxlength="6" 
@@ -207,9 +208,10 @@
         </div>
         
         <div class="form-group">
-          <div class="col-3"><label class="form-label">CC Num</label></div>
+          <div class="col-3"><label class="form-label" for="midi-cc-num">CC Num</label></div>
           <div class="col-2">
             <input 
+              id="midi-cc-num"
               class="form-input" 
               type="number" 
               min="0" 
@@ -227,14 +229,16 @@
               max="127" 
               bind:value={editorCC.cc}
               on:input={(e) => updateEditorField('cc', parseInt(e.target.value))}
+              aria-label="CC Number slider"
             />
           </div>
         </div>
         
         <div class="form-group">
-          <div class="col-3"><label class="form-label">Min Value</label></div>
+          <div class="col-3"><label class="form-label" for="midi-cc-min">Min Value</label></div>
           <div class="col-2">
             <input 
+              id="midi-cc-min"
               class="form-input" 
               type="number" 
               min="0" 
@@ -252,14 +256,16 @@
               max="127" 
               bind:value={editorCC.min}
               on:input={(e) => updateEditorField('min', parseInt(e.target.value))}
+              aria-label="Min Value slider"
             />
           </div>
         </div>
         
         <div class="form-group">
-          <div class="col-3"><label class="form-label">Max Value</label></div>
+          <div class="col-3"><label class="form-label" for="midi-cc-max">Max Value</label></div>
           <div class="col-2">
             <input 
+              id="midi-cc-max"
               class="form-input" 
               type="number" 
               min="0" 
@@ -277,14 +283,16 @@
               max="127" 
               bind:value={editorCC.max}
               on:input={(e) => updateEditorField('max', parseInt(e.target.value))}
+              aria-label="Max Value slider"
             />
           </div>
         </div>
         
         <div class="form-group">
-          <div class="col-3"><label class="form-label">Start Value</label></div>
+          <div class="col-3"><label class="form-label" for="midi-cc-start">Start Value</label></div>
           <div class="col-2">
             <input 
+              id="midi-cc-start"
               class="form-input" 
               type="number" 
               min="0" 
@@ -302,6 +310,7 @@
               max="127" 
               bind:value={editorCC.start}
               on:input={(e) => updateEditorField('start', parseInt(e.target.value))}
+              aria-label="Start Value slider"
             />
           </div>
         </div>
@@ -310,10 +319,10 @@
           <div class="col-3"></div>
           <div class="col-9">
             {#if selectedCC}
-              <a class="btn btn-sm btn-error tooltip" data-tooltip="Delete selected continuous control from list." on:click={deleteCC}>Delete</a>
-              <a class="btn btn-sm tooltip" data-tooltip="Clear selection and add new continuous control." on:click={() => { selectedCC = null; editorCC = createContinuousControl(); }}>Add New</a>
+              <button type="button" class="btn btn-sm btn-error tooltip" data-tooltip="Delete selected continuous control from list." on:click={deleteCC}>Delete</button>
+              <button type="button" class="btn btn-sm tooltip" data-tooltip="Clear selection and add new continuous control." on:click={() => { selectedCC = null; editorCC = createContinuousControl(); }}>Add New</button>
             {:else}
-              <a class="btn btn-sm btn-primary tooltip" data-tooltip="Add new continuous control to list." on:click={addNewCC}>Add new</a>
+              <button type="button" class="btn btn-sm btn-primary tooltip" data-tooltip="Add new continuous control to list." on:click={addNewCC}>Add new</button>
             {/if}
           </div>
         </div>

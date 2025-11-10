@@ -28,7 +28,13 @@
 </script>
 
 <div class="modal modal-sm active" id="importInstrumentSelection">
-  <div class="modal-overlay" on:click={handleCancel}></div>
+  <button 
+    class="modal-overlay" 
+    on:click={handleCancel}
+    on:keydown={(e) => e.key === 'Enter' && handleCancel()}
+    aria-label="Close modal"
+    type="button"
+  ></button>
   <div class="modal-container" role="document">
     <div class="modal-header">
       <div class="modal-title h5">Import Instrument</div>

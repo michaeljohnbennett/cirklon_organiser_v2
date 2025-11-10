@@ -44,17 +44,17 @@
         bind:value={editNameValue}
         on:blur={saveName}
         on:keydown={handleKeydown}
-        autofocus
       />
     {:else}
-      <span 
-        class="label label-rounded logo" 
-        style="cursor: pointer;"
+      <button 
+        style="cursor: pointer; border: none; background: transparent; padding: 0;"
         on:click={startEditName}
+        on:keydown={(e) => e.key === 'Enter' && startEditName()}
         title="Click to edit session name"
+        type="button"
       >
-        {$session.name}
-      </span>
+        <span class="label label-rounded logo">{$session.name}</span>
+      </button>
     {/if}
   </section>
   <section class="navbar-section">

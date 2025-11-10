@@ -18,22 +18,22 @@
     <ul class="tab tab-block">
       <li class="tab-item">
         <label for="instrumentSettings">
-          <a>Settings</a>
+          <a href="#settings">Settings</a>
         </label>
       </li>
       <li class="tab-item">
         <label for="instrumentCC">
-          <a class="badge" data-badge={$session.selectedInstrument.continuousControls?.length || 0}>Midi CC´s</a>
+          <a href="#cc" class="badge" data-badge={$session.selectedInstrument.continuousControls?.length || 0}>Midi CC´s</a>
         </label>
       </li>
       <li class="tab-item">
         <label for="instrumentTrackControl">
-          <a class="badge" data-badge={$session.selectedInstrument.trackControls?.length || 0}>Track controls</a>
+          <a href="#trackControl" class="badge" data-badge={$session.selectedInstrument.trackControls?.length || 0}>Track controls</a>
         </label>
       </li>
       <li class="tab-item">
         <label for="instrumentRowDefs">
-          <a class="badge" data-badge={$session.selectedInstrument.rowDefinitions?.length || 0}>Row Defintions</a>
+          <a href="#rowDefs" class="badge" data-badge={$session.selectedInstrument.rowDefinitions?.length || 0}>Row Defintions</a>
         </label>
       </li>
     </ul>

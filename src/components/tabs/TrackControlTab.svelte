@@ -68,7 +68,8 @@
     <div class="column col-7">
       <section id="controls">
         {#each trackControls as control, index}
-          <div 
+          <button 
+            type="button"
             class="control"
             class:active={control === selectedControl}
             class:cc={control.option === CirklonContinuousControl}
@@ -78,7 +79,7 @@
           >
             <div>{getFullName(control)}</div>
             <div>{getValue(control)}</div>
-          </div>
+          </button>
         {/each}
       </section>
     </div>
@@ -96,10 +97,11 @@
         {#if editorControl}
           <div class="form-group">
             <div class="col-3">
-              <label class="form-label">Type</label>
+              <label class="form-label" for="track-control-type">Type</label>
             </div>
             <div class="col-9">
               <select
+                id="track-control-type"
                 class="form-select"
                 bind:value={editorControl.option}
                 on:change={updateControl}
@@ -114,10 +116,11 @@
           {#if editorControl.option === CirklonContinuousControl}
             <div class="form-group">
               <div class="col-3">
-                <label class="form-label">CC</label>
+                <label class="form-label" for="track-control-cc">CC</label>
               </div>
               <div class="col-9">
                 <select
+                  id="track-control-cc"
                   class="form-select"
                   value={editorControl.continuousControl?.cc || ''}
                   on:change={(e) => {
@@ -138,10 +141,11 @@
           {#if editorControl.option === CirklonTrackCtrl}
             <div class="form-group">
               <div class="col-3">
-                <label class="form-label">Track CTRL</label>
+                <label class="form-label" for="track-control-value">Track CTRL</label>
               </div>
               <div class="col-9">
                 <select
+                  id="track-control-value"
                   class="form-select"
                   bind:value={editorControl.trackValue}
                   on:change={updateControl}

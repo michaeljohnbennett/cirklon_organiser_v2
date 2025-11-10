@@ -95,9 +95,10 @@
           <legend>{selectedRow ? 'Edit' : 'New'}</legend>
           
           <div class="form-group">
-            <div class="col-3"><label class="form-label">Name</label></div>
+            <div class="col-3"><label class="form-label" for="row-def-name">Name</label></div>
             <div class="col-9">
               <input 
+                id="row-def-name"
                 class="form-input" 
                 type="text" 
                 maxlength="6" 
@@ -108,9 +109,10 @@
           </div>
           
           <div class="form-group">
-            <div class="col-3"><label class="form-label">Label</label></div>
+            <div class="col-3"><label class="form-label" for="row-def-label">Label</label></div>
             <div class="col-9">
               <input 
+                id="row-def-label"
                 class="form-input" 
                 type="text" 
                 maxlength="6" 
@@ -121,10 +123,10 @@
           </div>
           
           <div class="form-group">
-            <div class="col-3"><label class="form-label">Show</label></div>
+            <div class="col-3"><label class="form-label" for="row-def-show">Show</label></div>
             <div class="col-9">
               <label class="form-switch">
-                <input type="checkbox" bind:checked={editorRow.show} />
+                <input id="row-def-show" type="checkbox" bind:checked={editorRow.show} />
                 <i class="form-icon"></i>
               </label>
             </div>
