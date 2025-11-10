@@ -1,7 +1,8 @@
 <script>
   import { session, showImportModal } from '../stores/session.js';
-  import { saveSession, loadSession, loadInstrumentFile } from '../lib/fileHandlers.js';
+  import { saveSession, loadSession, loadInstrumentFile, exportInstrumentData } from '../lib/fileHandlers.js';
   import { createInstrument } from '../lib/models.js';
+  import { saveAs } from 'file-saver';
 
   let sessionFileInput;
   let instrumentFileInput;
@@ -78,6 +79,30 @@
     
     session.addInstrument(duplicate);
   }
+
+  function handleExportInstrument() {
+    if (!$session.selectedInstrument) return;
+    
+    const instrument = $session.selectedInstrument;
+    const instrumentData = {
+      instrument_data: {}
+    };
+    
+    // Export the instrument data
+    instrumentData.instrument_data[instrument.name] = exportInstrumentData(instrument);
+    
+    const output = JSON.stringify(instrumentData, null, '\t');
+    const blob = new Blob([output], { type: 'text/plain;charset=utf-8' });
+    
+    // Sanitize filename
+    const filename = instrument.name.replace(/[^a-z0-9_\-]/gi, '_').toLowerCase();
+    saveAs(blob, `${filename}.CKI`);
+    
+    setTimeout(() => {
+      alert(`Instrument "${instrument.name}" exported as "${filename}.CKI"`);
+    }, 100);
+  }
+
 </script>
 
 <input
@@ -97,85 +122,85 @@
 />
 
 <div class="toolbar-container">
-  <!-- Session controls row -->
-  <div class="navbar toolbar-row">
-    <section class="navbar-section">
-      <span class="text-bold" style="margin-right: 1rem;">Session:</span>
-      <button class="btn btn-sm btn-primary" on:click={handleNewSession}>New</button>
-      <button class="btn btn-sm" on:click={handleSaveSession}>Save</button>
-      <button class="btn btn-sm" on:click={handleLoadSession}>Load</button>
+  <div class="navbar">
+    <section class="navbar-section columns">
+      <div class="column col-auto">
+        <div class="btn-group btn-group-block">
+          <button class="btn" on:click={handleNewSession}>New</button>
+          <button class="btn" on:click={handleLoadSession}>Open</button>
+          <button class="btn" on:click={handleSaveSession}>Save</button>
+        </div>
+      </div>
+      <div class="column" style="text-align:center">
+        {#if $session.selectedInstrument}
+          <span class="label label-rounded label-primary">{$session.selectedInstrument.name}</span>
+        {/if}
+      </div>
     </section>
-  </div>
-
-  <!-- Instrument controls row -->
-  <div class="navbar toolbar-row">
-    <section class="navbar-section">
-      <span class="text-bold" style="margin-right: 1rem;">Instrument:</span>
-      <button class="btn btn-sm btn-primary" on:click={handleNewInstrument}>New</button>
-      <button class="btn btn-sm" on:click={handleImportInstrument}>Import</button>
-      <button 
-        class="btn btn-sm" 
-        on:click={handleDuplicateInstrument}
-        disabled={!$session.selectedInstrument}
-      >
-        Duplicate
-      </button>
-      <button 
-        class="btn btn-sm" 
-        on:click={handleDeleteInstrument}
-        disabled={!$session.selectedInstrument}
-      >
-        Delete
-      </button>
+    <section class="navbar-center">
+      <div class="btn-group btn-group-block">
+        <button 
+          class="btn tooltip" 
+          data-tooltip="Import instrument" 
+          on:click={handleImportInstrument}
+        >
+          <i class="icon icon-upload btn-sm"></i>
+        </button>
+        <button 
+          class="btn tooltip" 
+          data-tooltip="Export selected instrument" 
+          on:click={handleExportInstrument}
+          disabled={!$session.selectedInstrument}
+        >
+          <i class="icon icon-download btn-sm"></i>
+        </button>
+        <button 
+          class="btn tooltip" 
+          data-tooltip="Add new instrument" 
+          on:click={handleNewInstrument}
+        >
+          <i class="icon icon-plus"></i>
+        </button>
+        <button 
+          class="btn tooltip" 
+          data-tooltip="Duplicate selected instrument" 
+          on:click={handleDuplicateInstrument}
+          disabled={!$session.selectedInstrument}
+        >
+          <i class="icon icon-copy"></i>
+        </button>
+        <button 
+          class="btn tooltip" 
+          data-tooltip="Delete selected instrument" 
+          on:click={handleDeleteInstrument}
+          disabled={!$session.selectedInstrument}
+        >
+          <i class="icon icon-minus"></i>
+        </button>
+      </div>
     </section>
-    
-    {#if $session.selectedInstrument}
-      <section class="navbar-center">
+    <section class="navbar-section">
+      <div class="column">
         <select 
-          class="form-select select-sm" 
+          class="form-select" 
           value={$session.instruments.indexOf($session.selectedInstrument)}
           on:change={(e) => {
             const idx = parseInt(e.target.value);
             session.selectInstrument($session.instruments[idx]);
           }}
+          disabled={$session.instruments.length <= 1}
         >
           {#each $session.instruments as instrument, i}
             <option value={i}>{instrument.name}</option>
           {/each}
         </select>
-      </section>
-      
-      <section class="navbar-section">
-        <span class="label label-secondary">
-          Port: {$session.selectedInstrument.midiPort}
-        </span>
-        <span class="label label-secondary">
-          Ch: {$session.selectedInstrument.midiChannel}
-        </span>
-      </section>
-    {/if}
+      </div>
+    </section>
   </div>
 </div>
 
 <style>
   .toolbar-container {
     border-bottom: 1px solid #dadee4;
-  }
-  
-  .toolbar-row {
-    padding: 0.4rem 0.8rem;
-    border-bottom: 1px solid #f1f3f5;
-  }
-  
-  .toolbar-row:last-child {
-    border-bottom: none;
-  }
-  
-  .navbar-section .btn {
-    margin-right: 0.4rem;
-  }
-  
-  .navbar-section .label {
-    margin-left: 0.4rem;
   }
 </style>

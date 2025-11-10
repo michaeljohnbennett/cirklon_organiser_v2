@@ -12,13 +12,8 @@
   const controlOptions = [CirklonEmpty, CirklonContinuousControl, CirklonTrackCtrl];
 
   function selectControl(control) {
-    if (selectedControl === control) {
-      selectedControl = null;
-      editorControl = null;
-    } else {
-      selectedControl = control;
-      editorControl = { ...control };
-    }
+    selectedControl = control;
+    editorControl = { ...control };
   }
 
   function updateControl() {
@@ -50,7 +45,7 @@
     session.updateInstrument({ trackControls: newControls });
   }
 
-  function getDisplayName(control) {
+  function getFullName(control) {
     if (control.option === CirklonEmpty) return ' ';
     if (control.option === CirklonContinuousControl) {
       return control.continuousControl ? `CC #${control.continuousControl.cc}` : 'CC';
@@ -59,7 +54,7 @@
     return 'Unknown';
   }
 
-  function getDisplayValue(control) {
+  function getValue(control) {
     if (control.option === CirklonEmpty) return ' ';
     if (control.option === CirklonContinuousControl) {
       return control.continuousControl ? control.continuousControl.name : '';
@@ -69,126 +64,101 @@
   }
 </script>
 
-<div class="container">
-  <div class="columns">
-    <!-- Track Control Grid -->
+<div class="columns">
     <div class="column col-7">
-      <div class="panel">
-        <div class="panel-header">
-          <div class="panel-title">Track Controls</div>
-          <div class="btn-group btn-group-block">
-            <button class="btn btn-sm" on:click={addPage}>Add Page</button>
-            <button 
-              class="btn btn-sm" 
-              on:click={deletePage}
-              disabled={trackControls.length <= 6}
-            >
-              Delete Last Page
-            </button>
+      <section id="controls">
+        {#each trackControls as control, index}
+          <div 
+            class="control"
+            class:active={control === selectedControl}
+            class:cc={control.option === CirklonContinuousControl}
+            class:track={control.option === CirklonTrackCtrl}
+            on:click={() => selectControl(control)}
+            style="cursor: pointer;"
+          >
+            <div>{getFullName(control)}</div>
+            <div>{getValue(control)}</div>
           </div>
-        </div>
-        <div class="panel-body">
-          {#each Array(Math.ceil(trackControls.length / 6)) as _, pageIndex}
-            <div class="divider text-center" data-content="Page {pageIndex + 1}"></div>
-            <div class="columns">
-              {#each trackControls.slice(pageIndex * 6, (pageIndex + 1) * 6) as control, idx}
-                <div class="column col-2">
-                  <button
-                    class="btn btn-block"
-                    class:btn-primary={selectedControl === control}
-                    on:click={() => selectControl(control)}
-                    style="margin: 0.2rem 0;"
-                  >
-                    <div class="text-bold">{getDisplayName(control)}</div>
-                    <div class="text-small">{getDisplayValue(control)}</div>
-                  </button>
-                </div>
-              {/each}
-            </div>
-          {/each}
-        </div>
-      </div>
+        {/each}
+      </section>
     </div>
+    
+    <div class="divider-vert col-1"></div>
+    
+    <div class="column col-4">
+      <form class="form-horizontal" on:submit|preventDefault>
+        {#if selectedControl}
+          <legend>Edit</legend>
+        {:else}
+          <legend>Select a element to Edit</legend>
+        {/if}
+        
+        {#if editorControl}
+          <div class="form-group">
+            <div class="col-3">
+              <label class="form-label">Type</label>
+            </div>
+            <div class="col-9">
+              <select
+                class="form-select"
+                bind:value={editorControl.option}
+                on:change={updateControl}
+              >
+                {#each controlOptions as option}
+                  <option value={option}>{option}</option>
+                {/each}
+              </select>
+            </div>
+          </div>
 
-    <!-- Track Control Editor -->
-    <div class="column col-5">
-      <div class="panel">
-        <div class="panel-header">
-          <div class="panel-title">Edit Control</div>
-        </div>
-        <div class="panel-body">
-          {#if editorControl}
-            <form class="form-horizontal" on:submit|preventDefault={updateControl}>
-              <div class="form-group">
-                <div class="col-4">
-                  <label class="form-label">Type</label>
-                </div>
-                <div class="col-8">
-                  <select
-                    class="form-select"
-                    bind:value={editorControl.option}
-                    on:change={updateControl}
-                  >
-                    {#each controlOptions as option}
-                      <option value={option}>{option}</option>
-                    {/each}
-                  </select>
-                </div>
+          {#if editorControl.option === CirklonContinuousControl}
+            <div class="form-group">
+              <div class="col-3">
+                <label class="form-label">CC</label>
               </div>
-
-              {#if editorControl.option === CirklonContinuousControl}
-                <div class="form-group">
-                  <div class="col-4">
-                    <label class="form-label">MIDI CC</label>
-                  </div>
-                  <div class="col-8">
-                    <select
-                      class="form-select"
-                      bind:value={editorControl.continuousControl}
-                      on:change={updateControl}
-                    >
-                      <option value={null}>Select CC...</option>
-                      {#each continuousControls as cc}
-                        <option value={cc}>CC #{cc.cc} - {cc.name}</option>
-                      {/each}
-                    </select>
-                  </div>
-                </div>
-              {/if}
-
-              {#if editorControl.option === CirklonTrackCtrl}
-                <div class="form-group">
-                  <div class="col-4">
-                    <label class="form-label">Track Value</label>
-                  </div>
-                  <div class="col-8">
-                    <select
-                      class="form-select"
-                      bind:value={editorControl.trackValue}
-                      on:change={updateControl}
-                    >
-                      {#each trackValues as value}
-                        <option value={value}>{value}</option>
-                      {/each}
-                    </select>
-                  </div>
-                </div>
-              {/if}
-
-              <div class="form-group">
-                <div class="col-12">
-                  <button class="btn btn-primary" type="submit">Update</button>
-                  <button class="btn" type="button" on:click={() => { selectedControl = null; editorControl = null; }}>
-                    Clear
-                  </button>
-                </div>
+              <div class="col-9">
+                <select
+                  class="form-select"
+                  value={editorControl.continuousControl?.cc || ''}
+                  on:change={(e) => {
+                    const ccNum = parseInt(e.target.value);
+                    editorControl.continuousControl = continuousControls.find(cc => cc.cc === ccNum) || null;
+                    updateControl();
+                  }}
+                >
+                  <option value="">Select CC...</option>
+                  {#each continuousControls as cc}
+                    <option value={cc.cc}>{cc.label || `CC #${cc.cc} - ${cc.name}`}</option>
+                  {/each}
+                </select>
               </div>
-            </form>
-          {:else}
-            <p class="text-gray text-center">Select a control to edit</p>
+            </div>
           {/if}
-        </div>
+
+          {#if editorControl.option === CirklonTrackCtrl}
+            <div class="form-group">
+              <div class="col-3">
+                <label class="form-label">Track CTRL</label>
+              </div>
+              <div class="col-9">
+                <select
+                  class="form-select"
+                  bind:value={editorControl.trackValue}
+                  on:change={updateControl}
+                >
+                  {#each trackValues as value}
+                    <option value={value}>{value}</option>
+                  {/each}
+                </select>
+              </div>
+            </div>
+          {/if}
+        {/if}
+      </form>
+      
+      <div class="btn-group">
+        <button class="btn btn-sm" on:click={addPage}>Add new page</button>
+        <button class="btn btn-sm" on:click={deletePage}>Delete last page</button>
       </div>
     </div>
   </div>
-</div>

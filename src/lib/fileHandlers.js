@@ -80,6 +80,17 @@ export function exportInstrumentData(instrument) {
   // Export settings
   inst['midi_port'] = instrument.midiPort;
   inst['midi_chan'] = Number(instrument.midiChannel);
+  inst['default_note'] = instrument.default_note || 'C 3';
+  inst['default_patt'] = instrument.default_patt || 'P3';
+  inst['multi'] = instrument.multi ? 'true' : 'false';
+  inst['presend_pgm'] = instrument.presend_pgm ? 'on' : 'off';
+  inst['poly_spread'] = instrument.poly_spread ? 'on' : 'off';
+  inst['no_bankL'] = instrument.no_bankL || false;
+  inst['no_bankM'] = instrument.no_bankM || false;
+  inst['no_xpose'] = instrument.no_xpose || false;
+  inst['no_fts'] = instrument.no_fts || false;
+  inst['show_note_nums'] = instrument.show_note_nums || false;
+  inst['no_thru'] = instrument.no_thru || false;
   
   return inst;
 }
@@ -171,6 +182,17 @@ export function importInstrumentFromCKI(data, name) {
   instrument.name = name;
   instrument.midiPort = String(data.midi_port || '1');
   instrument.midiChannel = Number(data.midi_chan || 1);
+  instrument.default_note = data.default_note || 'C 3';
+  instrument.default_patt = data.default_patt || 'P3';
+  instrument.multi = data.multi === 'true' || data.multi === true;
+  instrument.presend_pgm = data.presend_pgm === 'on' || data.presend_pgm === true;
+  instrument.poly_spread = data.poly_spread === 'on' || data.poly_spread === true;
+  instrument.no_bankL = data.no_bankL || false;
+  instrument.no_bankM = data.no_bankM || false;
+  instrument.no_xpose = data.no_xpose || false;
+  instrument.no_fts = data.no_fts || false;
+  instrument.show_note_nums = data.show_note_nums || false;
+  instrument.no_thru = data.no_thru || false;
 
   console.log('Importing instrument:', name, 'with midiPort:', instrument.midiPort, 'and midiChannel:', instrument.midiChannel);
 

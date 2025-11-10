@@ -1,0 +1,19 @@
+{
+  "name": "General MIDI CC Template",
+  "description": "Common MIDI CC controllers",
+  "controls": [
+    { "name": "ModWhl", "cc": 1, "min": 0, "max": 127, "start": 0 },
+    { "name": "Breath", "cc": 2, "min": 0, "max": 127, "start": 0 },
+    { "name": "Vol", "cc": 7, "min": 0, "max": 127, "start": 100 },
+    { "name": "Pan", "cc": 10, "min": 0, "max": 127, "start": 64 },
+    { "name": "Expr", "cc": 11, "min": 0, "max": 127, "start": 127 },
+    { "name": "Sustain", "cc": 64, "min": 0, "max": 127, "start": 0 },
+    { "name": "Release", "cc": 72, "min": 0, "max": 127, "start": 64 },
+    { "name": "Attack", "cc": 73, "min": 0, "max": 127, "start": 64 },
+    { "name": "Cutoff", "cc": 74, "min": 0, "max": 127, "start": 64 },
+    { "name": "Reson", "cc": 71, "min": 0, "max": 127, "start": 64 },
+    { "name": "RevSnd", "cc": 91, "min": 0, "max": 127, "start": 0 },
+    { "name": "Chorus", "cc": 93, "min": 0, "max": 127, "start": 0 },
+    { "name": "Delay", "cc": 94, "min": 0, "max": 127, "start": 0 }
+  ]
+}

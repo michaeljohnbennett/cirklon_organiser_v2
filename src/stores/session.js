@@ -77,6 +77,24 @@ function createSession() {
       };
     }),
 
+    replaceInstrument: (newInstrument) => update(state => {
+      if (!state.selectedInstrument) return state;
+      
+      // Find the index of the selected instrument
+      const selectedIndex = state.instruments.findIndex(inst => inst === state.selectedInstrument);
+      if (selectedIndex === -1) return state;
+      
+      // Replace the instrument entirely
+      const updatedInstruments = [...state.instruments];
+      updatedInstruments[selectedIndex] = newInstrument;
+      
+      return {
+        ...state,
+        instruments: updatedInstruments,
+        selectedInstrument: updatedInstruments[selectedIndex]
+      };
+    }),
+
     setImportData: (data) => update(state => ({
       ...state,
       importInstrumentData: data
