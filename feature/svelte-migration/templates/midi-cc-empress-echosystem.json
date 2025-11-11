@@ -1,0 +1,16 @@
+{
+  "name": "Empress Echosystem",
+  "description": "Empress Echosystem Delay MIDI CC parameters",
+  "controls": [
+    { "name": "Time", "cc": 16, "min": 0, "max": 127, "start": 64 },
+    { "name": "Feedbk", "cc": 17, "min": 0, "max": 127, "start": 50 },
+    { "name": "Mix", "cc": 18, "min": 0, "max": 127, "start": 50 },
+    { "name": "Mod", "cc": 19, "min": 0, "max": 127, "start": 0 },
+    { "name": "Tone", "cc": 20, "min": 0, "max": 127, "start": 64 },
+    { "name": "Ratio", "cc": 21, "min": 0, "max": 127, "start": 64 },
+    { "name": "LFO", "cc": 22, "min": 0, "max": 127, "start": 64 },
+    { "name": "Depth", "cc": 23, "min": 0, "max": 127, "start": 30 },
+    { "name": "Filter", "cc": 24, "min": 0, "max": 127, "start": 64 },
+    { "name": "Tap", "cc": 64, "min": 0, "max": 127, "start": 0 }
+  ]
+}
