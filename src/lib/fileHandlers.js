@@ -115,6 +115,12 @@ export function loadSession(file) {
 
         // Import all instruments
         session.reset();
+
+        if (file && typeof file.name === 'string' && file.name.length > 0) {
+          const baseName = file.name.replace(/\.[^/.]+$/, '');
+          session.setName(baseName || file.name);
+        }
+
         instrumentKeys.forEach(key => {
           const instrument = importInstrumentFromCKI(data[key], key);
           session.addInstrument(instrument);
