@@ -31,18 +31,16 @@ jobs:
         id: paths
         run: |
           if [ "${{ github.ref }}" = "refs/heads/main" ] || [ "${{ github.ref }}" = "refs/heads/master" ]; then
-            echo "base_path=./" >> $GITHUB_OUTPUT
+            echo "base_path=/cirklon_organiser_v2/" >> $GITHUB_OUTPUT
             echo "dest_dir=." >> $GITHUB_OUTPUT
           else
             BRANCH_NAME=${GITHUB_REF#refs/heads/}
-            echo "base_path=/$BRANCH_NAME/" >> $GITHUB_OUTPUT
+            echo "base_path=/cirklon_organiser_v2/$BRANCH_NAME/" >> $GITHUB_OUTPUT
             echo "dest_dir=$BRANCH_NAME" >> $GITHUB_OUTPUT
           fi
       
       - name: Build Svelte app
-        env:
-          BASE_PATH: ${{ steps.paths.outputs.base_path }}
-        run: npm run build
+        run: BASE_PATH="${{ steps.paths.outputs.base_path }}" npm run build
       
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
