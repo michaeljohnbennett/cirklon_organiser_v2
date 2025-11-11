@@ -54,7 +54,6 @@
 
 <style>
   .tabs-container {
-    padding-top: 0.3rem;
-    padding-left: 0.2rem;
+    padding: 0.3rem 0;
   }
 </style>
