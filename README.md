@@ -1,23 +1,38 @@
-# Cirklon Organizer - V2
+# Cirklon Organizer v2
 
-This version is a fork of a fork from https://gitlab.com/cirklon-community/cirklon-organizer
+Modernised Svelte/Vite rewrite of the Cirklon instrument organiser, updated for Cirklon v2 workflows and firmware changes.
 
-Amending and updating the code to be more V2 and latest firmware aware.
+## Live Demo
 
-## View online:
+- https://michaeljohnbennett.github.io/cirklon_organiser_v2/
 
-The new "Cirklon Organizer" is a fork from the orignal "Cirklon Instrument Editor" 
-written by Sam Doshi hosted on github.
-https://github.com/samdoshi/cirklon-instrument-editor
+## Highlights
 
-This software use:
-- https://github.com/eligrey/FileSaver.js
-- https://knockoutjs.com
-- https://picturepan2.github.io/spectre/
+- Folder-style instrument tabs with live badge counts for CCs, track controls, and row definitions.
+- MIDI CC table tools: template library, cross-instrument copy, merge/replace workflows, and bulk delete safeguards.
+- Track control warnings that preserve existing mappings during CC imports.
+- Session import/export that preserves naming, MIDI port/channel, row definitions, and track control assignments.
+- Session names auto-sync with imported filenames for clearer context while editing.
+- Responsive layout updates to keep long CC lists, sliders, and forms ergonomic across screen sizes.
 
-### Screenshots
+## Local Development
 
-![Settings](Screenshots/Settings.png)
-![MidiCC](Screenshots/MidiCC.png)
-![TrackControl](Screenshots/TrackControl.png)
-![RowDefs](Screenshots/RowDefs.png)
+```bash
+npm install
+npm run dev
+```
+
+- Development server: http://localhost:5173 (Vite).
+- Build for production: `npm run build`.
+- Preview production build: `npm run preview`.
+
+## Tech Stack
+
+- [Svelte](https://svelte.dev/) + [Vite](https://vitejs.dev/)
+- [Spectre.css](https://picturepan2.github.io/spectre/) for base styling
+- [FileSaver.js](https://github.com/eligrey/FileSaver.js) for browser downloads
+
+## Credits
+
+- Based on the original [Cirklon Instrument Editor](https://github.com/samdoshi/cirklon-instrument-editor) by Sam Doshi.
+- Fork lineage from the community project at https://gitlab.com/cirklon-community/cirklon-organizer.

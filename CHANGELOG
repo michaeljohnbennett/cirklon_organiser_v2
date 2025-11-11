@@ -1,3 +1,14 @@
+V2.0.0-beta (2025-11-12)
+- Added
+    Moved to Vite and modern build tools
+    folder-style instrument tabs with badge counts and active-state polish
+    responsive MIDI CC table layout and scroll sizing tweaks
+    import workflow warning modal to protect existing track control mappings
+    session name auto-sync when opening CKI files
+    README refresh with GitHub Pages deployment link and updated feature list
+- Removed
+    legacy screenshots and unused data templates
+
 v0.0.8 (2020-11-03)
 -Fix
     start_val read and save as integer! Javascript! (⊙_☉)
