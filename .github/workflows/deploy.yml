@@ -39,17 +39,16 @@ jobs:
         id: basepath
         run: |
           if [ "${{ github.ref }}" = "refs/heads/main" ] || [ "${{ github.ref }}" = "refs/heads/master" ]; then
-            echo "BASE_PATH=./" >> $GITHUB_ENV
+            echo "base_path=./" >> $GITHUB_OUTPUT
           else
             BRANCH_NAME=${GITHUB_REF#refs/heads/}
-            echo "BASE_PATH=/$BRANCH_NAME/" >> $GITHUB_ENV
+            echo "base_path=/$BRANCH_NAME/" >> $GITHUB_OUTPUT
           fi
           echo "Branch: ${{ github.ref }}"
-          echo "Base path: $BASE_PATH"
       
       - name: Build Svelte app
         env:
-          BASE_PATH: ${{ env.BASE_PATH }}
+          BASE_PATH: ${{ steps.basepath.outputs.base_path }}
         run: npm run build
       
       - name: Setup Pages
