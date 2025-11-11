@@ -38,9 +38,19 @@ jobs:
             echo "base_path=/cirklon_organiser_v2/$BRANCH_NAME/" >> $GITHUB_OUTPUT
             echo "dest_dir=$BRANCH_NAME" >> $GITHUB_OUTPUT
           fi
+          echo "=== Deploy Debug Info ==="
+          echo "Branch: ${{ github.ref }}"
+          echo "Repo: ${{ github.repository }}"
+          cat $GITHUB_OUTPUT
       
       - name: Build Svelte app
-        run: BASE_PATH="${{ steps.paths.outputs.base_path }}" npm run build
+        run: |
+          echo "Building with BASE_PATH=${{ steps.paths.outputs.base_path }}"
+          BASE_PATH="${{ steps.paths.outputs.base_path }}" npm run build
+          echo "Build complete. Checking dist folder:"
+          ls -la dist/
+          echo "Index.html first 500 chars:"
+          head -c 500 dist/index.html
       
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -49,3 +59,14 @@ jobs:
           publish_dir: ./dist
           destination_dir: ${{ steps.paths.outputs.dest_dir }}
           keep_files: true
+      
+      - name: Deployment Summary
+        run: |
+          echo "=== Deployment Complete ==="
+          echo "Destination dir: ${{ steps.paths.outputs.dest_dir }}"
+          echo "Base path: ${{ steps.paths.outputs.base_path }}"
+          if [ "${{ steps.paths.outputs.dest_dir }}" = "." ]; then
+            echo "URL: https://michaeljohnbennett.github.io/cirklon_organiser_v2/"
+          else
+            echo "URL: https://michaeljohnbennett.github.io/cirklon_organiser_v2/${{ steps.paths.outputs.dest_dir }}/"
+          fi
