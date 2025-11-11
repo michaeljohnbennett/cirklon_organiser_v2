@@ -9,13 +9,12 @@ on:
 
 permissions:
   contents: write
-  pages: write
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout source
         uses: actions/checkout@v4
       
       - name: Setup Node
@@ -27,46 +26,48 @@ jobs:
       - name: Install dependencies
         run: npm ci
       
-      - name: Determine base path and destination
+      - name: Determine base path
         id: paths
         run: |
           if [ "${{ github.ref }}" = "refs/heads/main" ] || [ "${{ github.ref }}" = "refs/heads/master" ]; then
             echo "base_path=/cirklon_organiser_v2/" >> $GITHUB_OUTPUT
-            echo "dest_dir=." >> $GITHUB_OUTPUT
+            echo "dest_dir=" >> $GITHUB_OUTPUT
           else
             BRANCH_NAME=${GITHUB_REF#refs/heads/}
             echo "base_path=/cirklon_organiser_v2/$BRANCH_NAME/" >> $GITHUB_OUTPUT
             echo "dest_dir=$BRANCH_NAME" >> $GITHUB_OUTPUT
           fi
-          echo "=== Deploy Debug Info ==="
-          echo "Branch: ${{ github.ref }}"
-          echo "Repo: ${{ github.repository }}"
-          cat $GITHUB_OUTPUT
       
       - name: Build Svelte app
         run: |
-          echo "Building with BASE_PATH=${{ steps.paths.outputs.base_path }}"
           BASE_PATH="${{ steps.paths.outputs.base_path }}" npm run build
-          echo "Build complete. Checking dist folder:"
-          ls -la dist/
-          echo "Index.html first 500 chars:"
-          head -c 500 dist/index.html
       
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          destination_dir: ${{ steps.paths.outputs.dest_dir }}
-          keep_files: true
+          ref: gh-pages
+          path: gh-pages
+          fetch-depth: 0
       
-      - name: Deployment Summary
+      - name: Deploy to gh-pages
         run: |
-          echo "=== Deployment Complete ==="
-          echo "Destination dir: ${{ steps.paths.outputs.dest_dir }}"
-          echo "Base path: ${{ steps.paths.outputs.base_path }}"
-          if [ "${{ steps.paths.outputs.dest_dir }}" = "." ]; then
-            echo "URL: https://michaeljohnbennett.github.io/cirklon_organiser_v2/"
+          cd gh-pages
+          
+          if [ -z "${{ steps.paths.outputs.dest_dir }}" ]; then
+            # Deploy to root
+            find . -mindepth 1 -maxdepth 1 -not -name '.git' -exec rm -rf {} +
+            cp -r ../dist/* .
           else
-            echo "URL: https://michaeljohnbennett.github.io/cirklon_organiser_v2/${{ steps.paths.outputs.dest_dir }}/"
+            # Deploy to subdirectory
+            DEST="${{ steps.paths.outputs.dest_dir }}"
+            mkdir -p "$DEST"
+            rm -rf "$DEST"/*
+            cp -r ../dist/* "$DEST/"
           fi
+          
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add -A
+          git diff --quiet --cached || git commit -m "Deploy from ${{ github.ref_name }}"
+          git push
+
