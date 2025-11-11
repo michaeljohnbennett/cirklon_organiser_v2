@@ -1,6 +1,6 @@
 import { saveAs } from 'file-saver';
 import { get } from 'svelte/store';
-import { session, showImportModal } from '../stores/session.js';
+import { session, showImportModal, pendingImport } from '../stores/session.js';
 import { createInstrument, createContinuousControl, createTrackControl, createRowDefinition } from './models.js';
 
 // Save entire session as CKI file
@@ -151,16 +151,31 @@ export function loadInstrumentFile(file) {
           return;
         }
 
-        // Get the first instrument
-        const firstKey = instrumentKeys[0];
-        const instrumentData = {
-          data: data[firstKey],
-          name: firstKey
-        };
+        // If multiple instruments, show selection dialog
+        if (instrumentKeys.length > 1) {
+          const instrumentList = instrumentKeys.map(key => ({
+            name: key,
+            data: data[key],
+            selected: true
+          }));
+          
+          pendingImport.set({
+            instruments: instrumentList,
+            file: file
+          });
+          showImportModal.set(true);
+        } else {
+          // Single instrument - use original logic
+          const firstKey = instrumentKeys[0];
+          const instrumentData = {
+            data: data[firstKey],
+            name: firstKey
+          };
 
-        // Store import data and show modal
-        session.setImportData(instrumentData);
-        showImportModal.set(true);
+          // Store import data and show modal
+          session.setImportData(instrumentData);
+          showImportModal.set(true);
+        }
         
       } else {
         alert('Invalid Cirklon instrument file!');
@@ -254,6 +269,16 @@ export function importInstrumentFromCKI(data, name) {
   }
 
   return instrument;
+}
+
+// Import multiple instruments from data
+export function importMultipleInstruments(instrumentList) {
+  instrumentList.forEach(item => {
+    if (item.selected) {
+      const instrument = importInstrumentFromCKI(item.data, item.name);
+      session.addInstrument(instrument);
+    }
+  });
 }
 
 // Import instrument and show modal for merge/new

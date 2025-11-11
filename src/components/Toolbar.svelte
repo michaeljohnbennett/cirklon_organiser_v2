@@ -176,9 +176,9 @@
     <section class="navbar-section columns">
       <div class="column col-auto">
         <div class="btn-group btn-group-block">
-          <button class="btn" on:click={handleNewSession}>New</button>
-          <button class="btn" on:click={handleLoadSession}>Open</button>
-          <button class="btn" on:click={handleSaveSession}>Save</button>
+          <button class="btn" on:click={handleNewSession}>New Session</button>
+          <button class="btn tooltip" data-tooltip="Open session" on:click={handleLoadSession}>Open</button>
+          <button class="btn tooltip" data-tooltip="Save session" on:click={handleSaveSession}>Save</button>
         </div>
       </div>
       <div class="column" style="text-align:center">
@@ -290,7 +290,7 @@
     z-index: 9999 !important;
   }
 
-  .toolbar-container .tooltip::after{
+  .toolbar-container .tooltip::after {
     z-index: 9999 !important;
   }
   
@@ -327,5 +327,6 @@
 
   .instrument-label {
     font-size: 1rem;
-    padding: 0.3rem 1rem;  }
+    padding: 0.3rem 1rem;
+  }
 </style>

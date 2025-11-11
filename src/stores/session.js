@@ -9,10 +9,20 @@ export const CirklonTrackCtrl = 'Track CTRL';
 export const trackValues = ['pgm', 'quant%', 'note%', 'noteC', 'velo%', 'veloC', 'leng%', 'tbase', 'xpos', 'octave', 'knob1', 'knob2', 'fts-R', 'fts-S', 'reich'];
 export const midiPortValues = ['1', '2', '3', '4', '5', 'usb1', 'usb2', 'usb3', 'usb4', 'usb5'];
 
+// Helper function to generate default session name with YYMMDD format and random suffix
+function getDefaultSessionName() {
+  const now = new Date();
+  const yy = String(now.getFullYear()).slice(-2);
+  const mm = String(now.getMonth() + 1).padStart(2, '0');
+  const dd = String(now.getDate()).padStart(2, '0');
+  const randomSuffix = String(Math.floor(Math.random() * 100)).padStart(2, '0');
+  return `${yy}${mm}${dd}-${randomSuffix} Cirklon Cfg`;
+}
+
 // Main session store
 function createSession() {
   const { subscribe, set, update } = writable({
-    name: 'Untitled Session',
+    name: getDefaultSessionName(),
     instruments: [],
     selectedInstrument: null,
     importInstrumentData: null
@@ -22,7 +32,7 @@ function createSession() {
     subscribe,
     
     reset: () => set({
-      name: 'Untitled Session',
+      name: getDefaultSessionName(),
       instruments: [],
       selectedInstrument: null,
       importInstrumentData: null
@@ -138,6 +148,9 @@ export const session = createSession();
 
 // Modal visibility
 export const showImportModal = writable(false);
+
+// Store for multi-instrument import selection
+export const pendingImport = writable(null);
 
 // Helper functions for validation
 export function isNameValid(name) {
