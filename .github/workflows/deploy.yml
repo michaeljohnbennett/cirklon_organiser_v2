@@ -3,8 +3,9 @@ name: Deploy Svelte App to GitHub Pages
 on:
   push:
     branches:
+      - main
       - master
-      - feature/svelte-migration
+      - feature/**
 
 permissions:
   contents: read
@@ -34,7 +35,21 @@ jobs:
       - name: Install dependencies
         run: npm ci
       
+      - name: Determine base path
+        id: basepath
+        run: |
+          if [ "${{ github.ref }}" = "refs/heads/main" ] || [ "${{ github.ref }}" = "refs/heads/master" ]; then
+            echo "BASE_PATH=./" >> $GITHUB_ENV
+          else
+            BRANCH_NAME=${GITHUB_REF#refs/heads/}
+            echo "BASE_PATH=/$BRANCH_NAME/" >> $GITHUB_ENV
+          fi
+          echo "Branch: ${{ github.ref }}"
+          echo "Base path: $BASE_PATH"
+      
       - name: Build Svelte app
+        env:
+          BASE_PATH: ${{ env.BASE_PATH }}
         run: npm run build
       
       - name: Setup Pages
