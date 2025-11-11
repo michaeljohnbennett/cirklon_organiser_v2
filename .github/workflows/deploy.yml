@@ -1,37 +1,72 @@
-name: Deploy Static Site to GitHub Pages
+name: Deploy Svelte App to GitHub Pages
 
 on:
   push:
     branches:
+      - main
       - master
+      - feature/**
 
 permissions:
-  contents: read
+  contents: write
   pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
 
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-      
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          path: '.'
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Determine base path and destination
+        id: paths
+        run: |
+          if [ "${{ github.ref }}" = "refs/heads/main" ] || [ "${{ github.ref }}" = "refs/heads/master" ]; then
+            echo "base_path=/cirklon_organiser_v2/" >> $GITHUB_OUTPUT
+            echo "dest_dir=." >> $GITHUB_OUTPUT
+          else
+            BRANCH_NAME=${GITHUB_REF#refs/heads/}
+            echo "base_path=/cirklon_organiser_v2/$BRANCH_NAME/" >> $GITHUB_OUTPUT
+            echo "dest_dir=$BRANCH_NAME" >> $GITHUB_OUTPUT
+          fi
+          echo "=== Deploy Debug Info ==="
+          echo "Branch: ${{ github.ref }}"
+          echo "Repo: ${{ github.repository }}"
+          cat $GITHUB_OUTPUT
+      
+      - name: Build Svelte app
+        run: |
+          echo "Building with BASE_PATH=${{ steps.paths.outputs.base_path }}"
+          BASE_PATH="${{ steps.paths.outputs.base_path }}" npm run build
+          echo "Build complete. Checking dist folder:"
+          ls -la dist/
+          echo "Index.html first 500 chars:"
+          head -c 500 dist/index.html
       
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          destination_dir: ${{ steps.paths.outputs.dest_dir }}
+          keep_files: true
+      
+      - name: Deployment Summary
+        run: |
+          echo "=== Deployment Complete ==="
+          echo "Destination dir: ${{ steps.paths.outputs.dest_dir }}"
+          echo "Base path: ${{ steps.paths.outputs.base_path }}"
+          if [ "${{ steps.paths.outputs.dest_dir }}" = "." ]; then
+            echo "URL: https://michaeljohnbennett.github.io/cirklon_organiser_v2/"
+          else
+            echo "URL: https://michaeljohnbennett.github.io/cirklon_organiser_v2/${{ steps.paths.outputs.dest_dir }}/"
+          fi

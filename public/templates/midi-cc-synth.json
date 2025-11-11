@@ -1,0 +1,17 @@
+{
+  "name": "Synthesizer Template",
+  "description": "Common synth parameters",
+  "controls": [
+    { "name": "ModWhl", "cc": 1, "min": 0, "max": 127, "start": 0 },
+    { "name": "Vol", "cc": 7, "min": 0, "max": 127, "start": 100 },
+    { "name": "Pan", "cc": 10, "min": 0, "max": 127, "start": 64 },
+    { "name": "Cutoff", "cc": 74, "min": 0, "max": 127, "start": 64 },
+    { "name": "Reson", "cc": 71, "min": 0, "max": 127, "start": 64 },
+    { "name": "Attack", "cc": 73, "min": 0, "max": 127, "start": 64 },
+    { "name": "Decay", "cc": 75, "min": 0, "max": 127, "start": 64 },
+    { "name": "Release", "cc": 72, "min": 0, "max": 127, "start": 64 },
+    { "name": "LFO Rt", "cc": 76, "min": 0, "max": 127, "start": 64 },
+    { "name": "LFO Dp", "cc": 77, "min": 0, "max": 127, "start": 0 },
+    { "name": "FX Mix", "cc": 91, "min": 0, "max": 127, "start": 0 }
+  ]
+}
