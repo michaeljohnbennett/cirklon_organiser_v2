@@ -15,7 +15,7 @@
     <input type="radio" id="instrumentTrackControl" name="tabs" class="tab-locator" hidden bind:group={activeTab} value="trackControl" />
     <input type="radio" id="instrumentRowDefs" name="tabs" class="tab-locator" hidden bind:group={activeTab} value="rowDefs" />
     
-    <ul class="tab tab-block">
+    <ul class="tab tab-block tabs-container">
       <li class="tab-item" class:active={activeTab === 'settings'}>
         <label for="instrumentSettings">
           <i class="icon icon-menu"></i> Settings
@@ -51,3 +51,9 @@
     </div>
   </div>
 {/if}
+
+<style>
+  .tabs-container {
+    padding: 0.3rem 0;
+  }
+</style>

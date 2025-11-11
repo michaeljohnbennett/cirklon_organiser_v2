@@ -16,7 +16,7 @@
 </script>
 
 {#if instrument}
-<form class="form-horizontal columns">
+<form class="form-horizontal columns" on:submit|preventDefault>
     <div class="col-7">
       <div class="form-group" class:error={!isNameValid(instrument.name)}>
         <div class="col-3"><label class="form-label" for="instrument-name">Name</label></div>
@@ -24,7 +24,7 @@
           <input 
             id="instrument-name"
             class="form-input" 
-            type="text" 
+            type="search"
             placeholder="name" 
             maxlength="9" 
             bind:value={instrument.name}

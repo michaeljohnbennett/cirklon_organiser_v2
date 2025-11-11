@@ -38,7 +38,7 @@
   <section class="navbar-center">
     {#if isEditingName}
       <input 
-        type="text" 
+        type="search"
         class="form-input input-sm"
         style="width: 200px; display: inline-block;"
         bind:value={editNameValue}
@@ -53,7 +53,7 @@
         title="Click to edit session name"
         type="button"
       >
-        <span class="label label-rounded logo">{$session.name}</span>
+        <span class="label label-rounded logo session-label">{$session.name}</span>
       </button>
     {/if}
   </section>
@@ -65,5 +65,14 @@
 <style>
   .logo {
     user-select: none;
+  }
+
+  .session-label {
+    font-size: 1rem;
+    padding: 0.2rem 1rem !important;
+  }
+
+  header.navbar {
+    z-index: 10;
   }
 </style>

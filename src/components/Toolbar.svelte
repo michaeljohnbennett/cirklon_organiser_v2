@@ -114,7 +114,8 @@
   async function loadInstrumentTemplate(filename) {
     console.log('Loading template:', filename);
     try {
-      const response = await fetch(`/templates/${filename}`);
+      const templateUrl = `${import.meta.env.BASE_URL}templates/${filename}`;
+      const response = await fetch(templateUrl);
       console.log('Response:', response);
       const template = await response.json();
       console.log('Template data:', template);
@@ -182,7 +183,7 @@
       </div>
       <div class="column" style="text-align:center">
         {#if $session.selectedInstrument}
-          <span class="label label-rounded label-primary">{$session.selectedInstrument.name}</span>
+          <span class="label label-rounded label-primary instrument-label">{$session.selectedInstrument.name}</span>
         {/if}
       </div>
     </section>
@@ -279,6 +280,18 @@
 <style>
   .toolbar-container {
     border-bottom: 1px solid #dadee4;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    /* background: white; */
+  }
+
+  .toolbar-container .tooltip {
+    z-index: 9999 !important;
+  }
+
+  .toolbar-container .tooltip::after{
+    z-index: 9999 !important;
   }
   
   .template-menu {
@@ -311,4 +324,8 @@
     font-size: 0.7rem;
     color: #66758c;
   }
+
+  .instrument-label {
+    font-size: 1rem;
+    padding: 0.3rem 1rem;  }
 </style>

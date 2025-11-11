@@ -6,7 +6,7 @@
 
 <style>
   .app-footer {
-    position: fixed;
+    position: sticky;
     bottom: 0;
     left: 0;
     right: 0;
@@ -16,8 +16,9 @@
     text-align: center;
     font-size: 0.75rem;
     color: #66758c;
-    z-index: 100;
+    z-index: 50;
     box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+    margin-top: auto;
   }
 
   .footer-text {

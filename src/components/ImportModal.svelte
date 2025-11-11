@@ -64,3 +64,22 @@
     </div>
   </div>
 </div>
+
+<style>
+  .modal.modal-sm .modal-container {
+    width: 24rem;
+    max-width: 95vw;
+  }
+  
+  .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.4rem;
+    flex-wrap: nowrap;
+  }
+  
+  .modal-footer .btn {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+</style>

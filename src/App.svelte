@@ -9,9 +9,9 @@
 
 <Header />
 
-<main style="padding-bottom: 3rem;">
-  <Toolbar />
-  
+<Toolbar />
+
+<main>
   {#if $session.selectedInstrument}
     <InstrumentTabs />
   {/if}
@@ -22,3 +22,30 @@
 </main>
 
 <Footer />
+
+<style>
+  :global(body) {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  :global(#app) {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  :global(main) {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  :global(.tooltip) {
+    z-index: 9999 !important;
+  }
+
+  :global(.tooltip::after) {
+    z-index: 9999 !important;
+  }
+</style>
