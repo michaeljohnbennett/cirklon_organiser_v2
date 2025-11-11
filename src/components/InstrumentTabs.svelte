@@ -10,50 +10,44 @@
 
 {#if $session.selectedInstrument}
   <div>
-    <input type="radio" id="instrumentSettings" name="tabs" class="tab-locator" hidden bind:group={activeTab} value="settings" checked />
+    <input type="radio" id="instrumentSettings" name="tabs" class="tab-locator" hidden bind:group={activeTab} value="settings" />
     <input type="radio" id="instrumentCC" name="tabs" class="tab-locator" hidden bind:group={activeTab} value="cc" />
     <input type="radio" id="instrumentTrackControl" name="tabs" class="tab-locator" hidden bind:group={activeTab} value="trackControl" />
     <input type="radio" id="instrumentRowDefs" name="tabs" class="tab-locator" hidden bind:group={activeTab} value="rowDefs" />
     
     <ul class="tab tab-block">
-      <li class="tab-item">
+      <li class="tab-item" class:active={activeTab === 'settings'}>
         <label for="instrumentSettings">
-          <a href="#settings">Settings</a>
+          <i class="icon icon-menu"></i> Settings
         </label>
       </li>
-      <li class="tab-item">
+      <li class="tab-item badge" class:active={activeTab === 'cc'} data-badge={$session.selectedInstrument.continuousControls?.length || 0}>
         <label for="instrumentCC">
-          <a href="#cc" class="badge" data-badge={$session.selectedInstrument.continuousControls?.length || 0}>Midi CC´s</a>
+          <i class="icon icon-bookmark"></i> Midi CC's
         </label>
       </li>
-      <li class="tab-item">
+      <li class="tab-item badge" class:active={activeTab === 'trackControl'} data-badge={$session.selectedInstrument.trackControls?.length || 0}>
         <label for="instrumentTrackControl">
-          <a href="#trackControl" class="badge" data-badge={$session.selectedInstrument.trackControls?.length || 0}>Track controls</a>
+          <i class="icon icon-arrow-right"></i> Track Control
         </label>
       </li>
-      <li class="tab-item">
+      <li class="tab-item badge" class:active={activeTab === 'rowDefs'} data-badge={$session.selectedInstrument.rowDefinitions?.length || 0}>
         <label for="instrumentRowDefs">
-          <a href="#rowDefs" class="badge" data-badge={$session.selectedInstrument.rowDefinitions?.length || 0}>Row Defintions</a>
+          <i class="icon icon-resize-vert"></i> Row Definitions
         </label>
       </li>
     </ul>
 
     <div class="tabs">
-      <section class="tab-content">
+      {#if activeTab === 'settings'}
         <SettingsTab />
-      </section>
-      
-      <section class="tab-content">
+      {:else if activeTab === 'cc'}
         <MidiCCTab />
-      </section>
-      
-      <section class="tab-content">
+      {:else if activeTab === 'trackControl'}
         <TrackControlTab />
-      </section>
-      
-      <section class="tab-content">
+      {:else if activeTab === 'rowDefs'}
         <RowDefinitionsTab />
-      </section>
+      {/if}
     </div>
   </div>
 {/if}

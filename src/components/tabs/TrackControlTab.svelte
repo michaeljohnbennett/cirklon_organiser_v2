@@ -40,7 +40,8 @@
 
   function deletePage() {
     if (trackControls.length <= 6) return;
-    
+    if (!confirm('Delete the last page of 6 controls? This cannot be undone.')) return;
+
     const newControls = trackControls.slice(0, -6);
     session.updateInstrument({ trackControls: newControls });
   }
@@ -62,11 +63,79 @@
     if (control.option === CirklonTrackCtrl) return control.trackValue;
     return 'Unknown';
   }
+  
+  function deleteRow(rowIndex) {
+    if (!confirm('Delete this row of 6 controls? This cannot be undone.')) return;
+    
+    const startIndex = rowIndex * 6;
+    const newControls = [
+      ...trackControls.slice(0, startIndex),
+      ...trackControls.slice(startIndex + 6)
+    ];
+    session.updateInstrument({ trackControls: newControls });
+    selectedControl = null;
+    editorControl = null;
+  }
+  
+  function insertRowAbove(rowIndex) {
+    const startIndex = rowIndex * 6;
+    const newControls = [...trackControls];
+    for (let i = 0; i < 6; i++) {
+      newControls.splice(startIndex, 0, createTrackControl());
+    }
+    session.updateInstrument({ trackControls: newControls });
+  }
+  
+  function insertRowBelow(rowIndex) {
+    const startIndex = (rowIndex + 1) * 6;
+    const newControls = [...trackControls];
+    for (let i = 0; i < 6; i++) {
+      newControls.splice(startIndex, 0, createTrackControl());
+    }
+    session.updateInstrument({ trackControls: newControls });
+  }
+  
+  function deleteAll() {
+    if (confirm('Delete all track controls? This cannot be undone.')) {
+      session.updateInstrument({ trackControls: [] });
+      selectedControl = null;
+      editorControl = null;
+    }
+  }
+  
+  function moveRowUp(rowIndex) {
+    if (rowIndex === 0) return; // Can't move first row up
+    
+    const startIndex = rowIndex * 6;
+    const prevStartIndex = (rowIndex - 1) * 6;
+    
+    const newControls = [...trackControls];
+    // Swap the two rows
+    const currentRow = newControls.splice(startIndex, 6);
+    newControls.splice(prevStartIndex, 0, ...currentRow);
+    
+    session.updateInstrument({ trackControls: newControls });
+  }
+  
+  function moveRowDown(rowIndex) {
+    const totalRows = Math.ceil(trackControls.length / 6);
+    if (rowIndex >= totalRows - 1) return; // Can't move last row down
+    
+    const startIndex = rowIndex * 6;
+    const nextStartIndex = (rowIndex + 1) * 6;
+    
+    const newControls = [...trackControls];
+    // Swap the two rows
+    const nextRow = newControls.splice(nextStartIndex, 6);
+    newControls.splice(startIndex, 0, ...nextRow);
+    
+    session.updateInstrument({ trackControls: newControls });
+  }
 </script>
 
 <div class="columns">
     <div class="column col-7">
-      <section id="controls">
+      <section id="controls" class="controls-with-actions">
         {#each trackControls as control, index}
           <button 
             type="button"
@@ -80,8 +149,60 @@
             <div>{getFullName(control)}</div>
             <div>{getValue(control)}</div>
           </button>
+          
+          {#if (index + 1) % 6 === 0}
+            <div class="row-actions">
+              <button 
+                type="button" 
+                class="btn btn-sm btn-action tooltip" 
+                data-tooltip="Move row up"
+                on:click={() => moveRowUp(Math.floor(index / 6))}
+                disabled={Math.floor(index / 6) === 0}
+              >
+                <i class="icon icon-arrow-up"></i>
+              </button>
+              <button 
+                type="button" 
+                class="btn btn-sm btn-action tooltip" 
+                data-tooltip="Move row down"
+                on:click={() => moveRowDown(Math.floor(index / 6))}
+                disabled={Math.floor(index / 6) >= Math.ceil(trackControls.length / 6) - 1}
+              >
+                <i class="icon icon-arrow-down"></i>
+              </button>
+              <button 
+                type="button" 
+                class="btn btn-sm btn-action btn-success tooltip" 
+                data-tooltip="Insert row above"
+                on:click={() => insertRowAbove(Math.floor(index / 6))}
+              >
+                ↑+
+              </button>
+              <button 
+                type="button" 
+                class="btn btn-sm btn-action btn-success tooltip" 
+                data-tooltip="Insert row below"
+                on:click={() => insertRowBelow(Math.floor(index / 6))}
+              >
+                ↓+
+              </button>
+              <button 
+                type="button" 
+                class="btn btn-sm btn-action btn-error tooltip" 
+                data-tooltip="Delete this row"
+                on:click={() => deleteRow(Math.floor(index / 6))}
+              >
+                <i class="icon icon-delete"></i>
+              </button>
+            </div>
+          {/if}
         {/each}
       </section>
+      <div style="margin-top: 1rem;">
+        <button class="btn btn-sm btn-error" on:click={deleteAll} disabled={trackControls.length === 0}>
+          Delete All
+        </button>
+      </div>
     </div>
     
     <div class="divider-vert col-1"></div>
@@ -162,7 +283,45 @@
       
       <div class="btn-group">
         <button class="btn btn-sm" on:click={addPage}>Add new page</button>
-        <button class="btn btn-sm" on:click={deletePage}>Delete last page</button>
+        <button
+          class="btn btn-sm btn-error"
+          on:click={deletePage}
+          disabled={trackControls.length <= 6}
+        >
+          Delete last page
+        </button>
       </div>
     </div>
   </div>
+
+<style>
+  .controls-with-actions {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr auto !important;
+  }
+  
+  .row-actions {
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .btn-action {
+    padding: 0.15rem 0.35rem;
+    min-width: auto;
+    width: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.1rem;
+  }
+  
+  .btn-action .icon {
+    font-size: 0.7rem;
+  }
+  
+  .btn-action:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+</style>

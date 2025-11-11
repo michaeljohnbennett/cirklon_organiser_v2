@@ -1,6 +1,5 @@
 <script>
   import { session, midiPortValues, isNameValid, isMidiChannelValid } from '../../stores/session.js';
-  import { createInstrument } from '../../lib/models.js';
 
   $: instrument = $session.selectedInstrument;
   
@@ -11,61 +10,14 @@
   
   const patternList = ['P3', 'CK'];
   
-  // Instrument templates
-  const templates = [
-    { file: 'instrument-template.CKI', name: 'Template - Full Setup', description: 'Complete instrument with 38 CCs and track controls' }
-  ];
-  
-  let showTemplateDropdown = false;
-  
   function updateInstrument(field, value) {
     session.updateInstrument({ [field]: value });
   }
-  
-  async function loadInstrumentTemplate(filename) {
-    try {
-      const response = await fetch(`/templates/${filename}`);
-      const template = await response.json();
-      
-      // Replace entire instrument with template data
-      const newInstrument = createInstrument(template);
-      session.replaceInstrument(newInstrument);
-      
-      showTemplateDropdown = false;
-    } catch (error) {
-      console.error('Failed to load instrument template:', error);
-      alert('Failed to load template');
-    }
-  }
-  
-  function toggleTemplateDropdown() {
-    showTemplateDropdown = !showTemplateDropdown;
-  }
 </script>
 
+{#if instrument}
 <form class="form-horizontal columns">
     <div class="col-7">
-      <div class="form-group">
-        <div class="col-3"><label class="form-label" for="load-template-btn">Load Template</label></div>
-        <div class="col-9">
-          <div class="dropdown" class:active={showTemplateDropdown}>
-            <button id="load-template-btn" type="button" class="btn btn-sm dropdown-toggle" tabindex="0" on:click={toggleTemplateDropdown}>
-              Load Instrument Template <i class="icon icon-caret"></i>
-            </button>
-            <ul class="menu">
-              {#each templates as template}
-                <li class="menu-item">
-                  <button type="button" on:click={() => loadInstrumentTemplate(template.file)}>
-                    <strong>{template.name}</strong><br/>
-                    <small>{template.description}</small>
-                  </button>
-                </li>
-              {/each}
-            </ul>
-          </div>
-        </div>
-      </div>
-      
       <div class="form-group" class:error={!isNameValid(instrument.name)}>
         <div class="col-3"><label class="form-label" for="instrument-name">Name</label></div>
         <div class="col-9">
@@ -235,3 +187,4 @@
       </div>
     </div>
   </form>
+{/if}

@@ -34,11 +34,38 @@ function createSession() {
     })),
 
     addInstrument: (instrument) => update(state => {
-      const newInstruments = [...state.instruments, instrument];
+      // Check for name conflicts and auto-increment
+      let finalName = instrument.name;
+      const existingNames = state.instruments.map(i => i.name);
+      
+      if (existingNames.includes(finalName)) {
+        // Check if name ends with a number
+        const match = finalName.match(/^(.+?)(\d+)$/);
+        if (match) {
+          // Name ends with a number, increment it
+          const baseName = match[1];
+          let number = parseInt(match[2]);
+          do {
+            number++;
+            finalName = `${baseName}${number}`;
+          } while (existingNames.includes(finalName));
+        } else {
+          // No number at end, append "2" and keep incrementing if needed
+          let number = 2;
+          do {
+            finalName = `${instrument.name}${number}`;
+            number++;
+          } while (existingNames.includes(finalName));
+        }
+      }
+      
+      // Create new instrument with potentially updated name
+      const instrumentToAdd = { ...instrument, name: finalName };
+      const newInstruments = [...state.instruments, instrumentToAdd];
       return {
         ...state,
         instruments: newInstruments,
-        selectedInstrument: instrument
+        selectedInstrument: instrumentToAdd
       };
     }),
 

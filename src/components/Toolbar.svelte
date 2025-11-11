@@ -3,9 +3,17 @@
   import { saveSession, loadSession, loadInstrumentFile, exportInstrumentData } from '../lib/fileHandlers.js';
   import { createInstrument } from '../lib/models.js';
   import { saveAs } from 'file-saver';
+  import { onMount, onDestroy } from 'svelte';
 
   let sessionFileInput;
   let instrumentFileInput;
+  
+  // Instrument templates
+  const templates = [
+    { file: 'instrument-template.CKI', name: 'Template - Full Setup', description: 'Complete instrument with 38 CCs and track controls' }
+  ];
+  
+  let showTemplateDropdown = false;
 
   function handleNewSession() {
     if (confirm('Create new session? Unsaved changes will be lost.')) {
@@ -102,6 +110,47 @@
       alert(`Instrument "${instrument.name}" exported as "${filename}.CKI"`);
     }, 100);
   }
+  
+  async function loadInstrumentTemplate(filename) {
+    console.log('Loading template:', filename);
+    try {
+      const response = await fetch(`/templates/${filename}`);
+      console.log('Response:', response);
+      const template = await response.json();
+      console.log('Template data:', template);
+      
+      // Create and add the new instrument from template
+      const newInstrument = createInstrument(template);
+      console.log('New instrument:', newInstrument);
+      session.addInstrument(newInstrument);
+      console.log('Template loaded successfully');
+    } catch (error) {
+      console.error('Failed to load instrument template:', error);
+      alert('Failed to load template: ' + error.message);
+    } finally {
+      showTemplateDropdown = false;
+    }
+  }
+  
+  function toggleTemplateDropdown(event) {
+    event.stopPropagation();
+    console.log('Toggle dropdown, current state:', showTemplateDropdown);
+    showTemplateDropdown = !showTemplateDropdown;
+  }
+  
+  function handleClickOutside(event) {
+    if (showTemplateDropdown && !event.target.closest('.dropdown')) {
+      showTemplateDropdown = false;
+    }
+  }
+  
+  onMount(() => {
+    window.addEventListener('click', handleClickOutside);
+  });
+  
+  onDestroy(() => {
+    window.removeEventListener('click', handleClickOutside);
+  });
 
 </script>
 
@@ -139,6 +188,34 @@
     </section>
     <section class="navbar-center">
       <div class="btn-group btn-group-block">
+        <div class="dropdown" class:active={showTemplateDropdown}>
+          <button 
+            class="btn tooltip dropdown-toggle" 
+            data-tooltip="Load instrument template"
+            on:click={toggleTemplateDropdown}
+            type="button"
+          >
+            <i class="icon icon-bookmark"></i>
+          </button>
+          <ul class="menu template-menu">
+            {#each templates as template}
+              <li class="menu-item">
+                <button 
+                  type="button" 
+                  on:click={(e) => {
+                    e.stopPropagation();
+                    console.log('Template button clicked:', template.file);
+                    loadInstrumentTemplate(template.file);
+                  }} 
+                  class="template-button"
+                >
+                  <div class="template-name">{template.name}</div>
+                  <div class="template-desc">{template.description}</div>
+                </button>
+              </li>
+            {/each}
+          </ul>
+        </div>
         <button 
           class="btn tooltip" 
           data-tooltip="Import instrument" 
@@ -202,5 +279,36 @@
 <style>
   .toolbar-container {
     border-bottom: 1px solid #dadee4;
+  }
+  
+  .template-menu {
+    min-width: 400px;
+    font-size: 0.75rem;
+  }
+  
+  .template-button {
+    width: 100%;
+    text-align: left;
+    padding: 0.4rem 0.6rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: block;
+    line-height: 1.2;
+  }
+  
+  .template-button:hover {
+    background-color: #f7f8f9;
+  }
+  
+  .template-name {
+    font-weight: 600;
+    font-size: 0.8rem;
+    margin-bottom: 0.1rem;
+  }
+  
+  .template-desc {
+    font-size: 0.7rem;
+    color: #66758c;
   }
 </style>

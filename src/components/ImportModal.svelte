@@ -11,9 +11,11 @@
       if (mode === 'new') {
         session.addInstrument(instrument);
       } else if (mode === 'merge') {
-        // For merge, we've modified the selected instrument in place
-        // Just trigger a reactive update
-        session.updateInstrument({});
+        // For merge, update the instrument with the merged data
+        session.updateInstrument({
+          continuousControls: instrument.continuousControls,
+          rowDefinitions: instrument.rowDefinitions
+        });
       }
     }
 
@@ -37,25 +39,26 @@
   ></button>
   <div class="modal-container" role="document">
     <div class="modal-header">
-      <div class="modal-title h5">Import Instrument</div>
+      <div class="modal-title h6" style="font-size: 0.8rem;">Import Instrument</div>
     </div>
     <div class="modal-body">
       <div class="content">
-        <p>How would you like to import this instrument?</p>
+        <p style="font-size: 0.75rem;">How would you like to import this instrument?</p>
       </div>
     </div>
     <div class="modal-footer">
-      <button class="btn" on:click={() => handleImport('new')}>
+      <button class="btn btn-sm" on:click={() => handleImport('new')} style="font-size: 0.75rem;">
         As New Instrument
       </button>
       <button 
-        class="btn" 
+        class="btn btn-sm" 
         on:click={() => handleImport('merge')}
         disabled={!$session.selectedInstrument}
+        style="font-size: 0.75rem;"
       >
         Merge with Current
       </button>
-      <button class="btn" on:click={handleCancel}>
+      <button class="btn btn-sm" on:click={handleCancel} style="font-size: 0.75rem;">
         Cancel
       </button>
     </div>

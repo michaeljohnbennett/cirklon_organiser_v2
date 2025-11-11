@@ -23,7 +23,7 @@ export function createInstrument(data = null, name = '') {
   }
   
   return {
-    name: name || 'New Instrument',
+    name: data?.name || name || 'New Instrument',
     midiPort: data?.midiPort || data?.midi_port || '1',
     midiChannel: data?.midiChannel || data?.midi_chan || 1,
     default_note: data?.default_note || 'C 3',

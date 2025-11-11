@@ -274,22 +274,37 @@ export function importInstrumentFromData(importData, mode) {
     // Import the new instrument data
     const importedInstrument = importInstrumentFromCKI(importData.data, importData.name);
     
-    // Merge logic: Add CCs and track controls that don't exist
+    // Merge logic: Imported values take precedence and overwrite existing ones
     const currentInst = currentSession.selectedInstrument;
     
-    // Merge continuous controls
+    // Merge settings fields
+    if (importedInstrument.name) currentInst.name = importedInstrument.name;
+    if (importedInstrument.midiPort) currentInst.midiPort = importedInstrument.midiPort;
+    if (importedInstrument.midiChannel) currentInst.midiChannel = importedInstrument.midiChannel;
+    if (importedInstrument.default_note) currentInst.default_note = importedInstrument.default_note;
+    if (importedInstrument.default_pattern) currentInst.default_pattern = importedInstrument.default_pattern;
+    
+    // Merge continuous controls - imported values overwrite existing by CC number
     importedInstrument.continuousControls.forEach(importedCC => {
-      const exists = currentInst.continuousControls.some(cc => cc.cc === importedCC.cc);
-      if (!exists) {
+      const existingIndex = currentInst.continuousControls.findIndex(cc => cc.cc === importedCC.cc);
+      if (existingIndex !== -1) {
+        // Overwrite existing CC with imported one
+        currentInst.continuousControls[existingIndex] = importedCC;
+      } else {
+        // Add new CC
         currentInst.continuousControls.push(importedCC);
       }
     });
     
-    // Merge row definitions
+    // Merge row definitions - imported values overwrite existing by name
     if (importedInstrument.rowDefinitions) {
       importedInstrument.rowDefinitions.forEach(importedRow => {
-        const exists = currentInst.rowDefinitions.some(row => row.name === importedRow.name);
-        if (!exists) {
+        const existingIndex = currentInst.rowDefinitions.findIndex(row => row.name === importedRow.name);
+        if (existingIndex !== -1) {
+          // Overwrite existing row with imported one
+          currentInst.rowDefinitions[existingIndex] = importedRow;
+        } else {
+          // Add new row
           currentInst.rowDefinitions.push(importedRow);
         }
       });
