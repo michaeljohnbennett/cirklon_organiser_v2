@@ -21,35 +21,19 @@ header {
 	padding: 0.5em;
 }
 
+/* Badge (badge count injected by Spectre) */
 .badge {
 	z-index: 1;
 }
 
-.tablescroll tbody {
-	display: block;
-	max-height: 20rem;
-	overflow-y: scroll;
-}
-
-.tablescroll thead, body tr {
-	display: table;
-	width: 100%;
-	table-layout: fixed;
-}
-
-tr.active {
-	background-color: #3E6B85 !important;
-	color: #fff;
-}
-
-tr.active > td:last-child {
+.tab-item.badge {
 	position: relative;
 }
 
-tr.active > td:last-child::after {
-	content: '\232a';
+.tab-item.badge::after {
 	position: absolute;
-	right: 1rem;
+	top: 0.2rem;
+	right: 0.5rem;
 }
 
 .logo:before {
@@ -131,27 +115,87 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .tabs {
-	padding: 0.5rem 1rem;
+	padding: 0.75rem 1rem;
+	background: #fff;
+	border: 1px solid #b2ada9;
+	border-top: none;
+	border-radius: 0 0.4rem 0.4rem 0.4rem;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+/* Instrument tabs (folder-style) */
+
+.tabs-container {
+	list-style: none;
+	display: flex;
+	align-items: flex-end;
+	gap: 0.35rem;
+	margin: 0;
+	padding: 0.35rem 0 0;
+	position: relative;
+}
+
+.tabs-container::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: -1px;
+	height: 1px;
+	background: #b2ada9;
+}
+
+.tab-item {
+	display: flex;
+	align-items: stretch;
+	border: 1px solid #b2ada9;
+	border-bottom: none;
+	background: #d7d2cf;
+	border-radius: 0.4rem 0.4rem 0 0;
+	min-height: 2.4rem;
+	padding: 0;
+	min-width: 8rem;
+	transition: background-color 0.2s ease, box-shadow 0.2s ease;
+	margin-bottom: 0;
+}
+
+.tab-item > label {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.55rem 1.25rem 0.45rem 1rem;
+	margin: 0;
+	width: 100%;
+	font-weight: 500;
+}
+
+.tab-item.badge > label {
+	padding-right: 2.25rem;
 }
 
 .tab-item > label:hover {
 	cursor: pointer;
 }
-.tab-content {
-	display: none;
+
+.tab-item label i {
+	margin: 0;
 }
 
-.tab-locator:nth-of-type(1):checked ~ .tab-block > .tab-item:nth-of-type(1) > label > a,
-.tab-locator:nth-of-type(2):checked ~ .tab-block > .tab-item:nth-of-type(2) > label > a,
-.tab-locator:nth-of-type(3):checked ~ .tab-block > .tab-item:nth-of-type(3) > label > a,
-.tab-locator:nth-of-type(4):checked ~ .tab-block > .tab-item:nth-of-type(4) > label > a {
-	border-bottom-color: #49464A;
-	color: #49464A;
+.tab-item:not(.active) {
+	opacity: 0.75;
 }
 
-.tab-locator:nth-of-type(1):checked ~ .tabs > .tab-content:nth-of-type(1),
-.tab-locator:nth-of-type(2):checked ~ .tabs > .tab-content:nth-of-type(2),
-.tab-locator:nth-of-type(3):checked ~ .tabs > .tab-content:nth-of-type(3),
-.tab-locator:nth-of-type(4):checked ~ .tabs > .tab-content:nth-of-type(4) {
-	display:block;
+.tab-item:not(.active):hover {
+	opacity: 1;
+	background: #e3deda;
 }
+
+.tab-item.active {
+	opacity: 1;
+	background: #fff;
+	box-shadow: 0 -1px 0 #fff inset, 0 2px 4px rgba(0, 0, 0, 0.08);
+	z-index: 2;
+	margin-bottom: -1px;
+	border-bottom: 1px solid transparent;
+}
+

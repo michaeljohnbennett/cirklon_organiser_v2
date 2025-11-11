@@ -337,11 +337,6 @@
             {/each}
           {/if}
         </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="5"></td>
-          </tr>
-        </tfoot>
       </table>
     </div>
   </div>
@@ -629,8 +624,7 @@
   }
 
   .cc-table-wrapper .table thead,
-  .cc-table-wrapper .table tbody,
-  .cc-table-wrapper .table tfoot {
+  .cc-table-wrapper .table tbody {
     display: block;
   }
 
@@ -638,15 +632,14 @@
     padding-right: 0.6rem;
   }
 
-  .cc-table-wrapper .table thead tr,
-  .cc-table-wrapper .table tfoot tr {
+  .cc-table-wrapper .table thead tr {
     display: table;
     width: 100%;
     table-layout: fixed;
   }
 
   .cc-table-wrapper .table tbody {
-    max-height: calc(100vh - 350px);
+    max-height: calc(100vh - 340px);
     overflow-y: auto;
   }
 

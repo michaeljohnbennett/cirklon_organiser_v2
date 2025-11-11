@@ -52,8 +52,3 @@
   </div>
 {/if}
 
-<style>
-  .tabs-container {
-    padding: 0.3rem 0;
-  }
-</style>
